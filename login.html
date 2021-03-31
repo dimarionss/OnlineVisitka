@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <title>OnlineVisitka</title>
+</head>
+
+<body>
+  <div id="app">
+    <template>
+      <v-app id="inspire">
+        <v-main class="indigo lighten-1">
+          <v-img src="img/fon.jpg" width='100%' height="80vh"></v-img>
+          <v-container>
+            <v-row class="login__row">
+              <v-col cols="12" sm="6" lg="4">
+                <v-sheet class="login__block" min-height="40vh" rounded="lg">
+                  <v-header>Вход</v-header>
+                  <v-form ref="form" v-model="valid" lazy-validation>
+
+                    <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+
+                    <v-text-field label="Пароль*" type="password" required></v-text-field>
+
+                    <v-checkbox v-model="checkbox"
+                      label="Запомнить" required></v-checkbox>
+
+                    <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+                      Вход
+                    </v-btn>
+                    <!-- modal registracion -->
+                    <v-dialog v-model="dialog" persistent max-width="600px">
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn color="primary" dark v-bind="attrs" v-on="on">
+                          Регистрация
+                        </v-btn>
+                      </template>
+                      <v-card>
+                        <v-card-title>
+                          <span class="headline">Форма регистрации</span>
+                        </v-card-title>
+                        <v-card-text>
+                          <v-container>
+                            <v-row>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Имя*" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Фамилия">
+                                </v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Название фирмы*" hint="Например: Салон красоты  " persistent-hint
+                                  required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Email*" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Пароль*" type="password" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Номер телефона*" type="tel" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6">
+                                <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Возраст*" required>
+                                </v-select>
+                              </v-col>
+                              <v-col cols="12" sm="6">
+                                <v-autocomplete
+                                  :items="['Facebook', 'Instagram', 'Viber', 'Telegram', 'Google', 'LinkedIn', 'Twitter', 'WhatsApp', 'Vkontakte', 'Twitch', 'YouTube', 'Pinterest']"
+                                  label="Социальные сети" multiple></v-autocomplete>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                          <small>*поля обязательные к заполнению</small>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="blue darken-1" text @click="dialog = false">
+                            Закрыть
+                          </v-btn>
+                          <v-btn color="blue darken-1" text @click="dialog = false">
+                            Регистрация
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                    <!-- modal registracion end-->
+
+
+                    <!-- icon login -->
+                    <v-col cols="12" sm="12" class="icon__bar__login">
+                      <v-header>Вход с помощью:</v-header>
+                      <v-btn class="ma-2" text icon color="blue darken-4">
+                        <v-icon>fab fa-facebook</v-icon>
+                      </v-btn>
+                      <v-btn class="ma-2" text icon color="blue lighten-2">
+                        <v-icon>fab fa-telegram-plane</v-icon>
+                      </v-btn>
+                      <v-btn class="ma-2" text icon color="pink darken-1">
+                        <v-icon>fab fa-instagram</v-icon>
+                      </v-btn>
+                      <v-btn class="ma-2" text icon color="purple darken-3">
+                        <v-icon>fab fa-viber</v-icon>
+                      </v-btn>
+                      <v-btn class="ma-2" text icon color="red darken-4">
+                        <v-icon>fab fa-google</v-icon>
+                      </v-btn>
+                    </v-col>
+                    <!-- icon login end-->
+
+
+
+                  </v-form>
+                </v-sheet>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+
+
+        <!-- footer -->
+        <v-footer dark padless>
+          <v-card flat tile class="indigo lighten-1 white--text text-center" width="100%">
+            <v-card-text>
+              <v-btn v-for="icon in icons_footer" :key="icon" class="mx-4 white--text" icon>
+                <v-icon size="24px">
+                  {{ icon }}
+                </v-icon>
+              </v-btn>
+            </v-card-text>
+
+            <v-card-text class="white--text pt-0">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel exercitationem consectetur nulla quasi veniam fugiat, laborum odit ut. Repellat eaque ipsum officiis, maxime odit ducimus consequatur ab libero porro deleniti.
+            </v-card-text>
+
+            <v-divider></v-divider>
+
+            <v-card-text class="white--text">
+              {{ new Date().getFullYear() }} — <strong>OnlineVisitka</strong>
+            </v-card-text>
+          </v-card>
+        </v-footer>
+        <!-- footer end -->
+
+
+
+      </v-app>
+    </template>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/JQuery.min.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>
