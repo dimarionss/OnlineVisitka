@@ -10,11 +10,11 @@ new Vue({
     ],
     selectedItem: 0,
     items: [{
-        text: 'My Files',
-        icon: 'mdi-folder'
+        text: 'Настройки',
+        icon: 'mdi-settings'
       },
       {
-        text: 'Shared with me',
+        text: 'Поделиться',
         icon: 'mdi-account-multiple'
       },
       {
@@ -26,16 +26,8 @@ new Vue({
         icon: 'mdi-history'
       },
       {
-        text: 'Offline',
-        icon: 'mdi-check-circle'
-      },
-      {
-        text: 'Uploads',
+        text: 'Загрузить',
         icon: 'mdi-upload'
-      },
-      {
-        text: 'Backups',
-        icon: 'mdi-cloud-upload'
       },
     ],
     valid: true,
@@ -59,9 +51,16 @@ new Vue({
       'mdi-telegram',
       'mdi-instagram',
     ],
+    icons_add_visitka: [
+      'mdi-facebook',
+      'mdi-google',
+      'mdi-telegram',
+      'mdi-instagram',
+    ],
   }),
   methods: {
     validate() {
+      window.location.href = 'index.html'
       this.$refs.form.validate()
     },
     reset() {

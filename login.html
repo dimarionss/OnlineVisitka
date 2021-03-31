@@ -29,8 +29,7 @@
 
                     <v-text-field label="Пароль*" type="password" required></v-text-field>
 
-                    <v-checkbox v-model="checkbox"
-                      label="Запомнить" required></v-checkbox>
+                    <v-checkbox v-model="checkbox" label="Запомнить" required></v-checkbox>
 
                     <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
                       Вход
@@ -46,9 +45,14 @@
                         <v-card-title>
                           <span class="headline">Форма регистрации</span>
                         </v-card-title>
+
                         <v-card-text>
                           <v-container>
                             <v-row>
+                              <v-col cols="12">
+                                <v-file-input :rules="rules" accept="image/png, image/jpeg, image/bmp"
+                                  placeholder="Выберите фото" prepend-icon="mdi-camera" label="Аватар"></v-file-input>
+                              </v-col>
                               <v-col cols="12" sm="6" md="4">
                                 <v-text-field label="Имя*" required></v-text-field>
                               </v-col>
@@ -139,7 +143,9 @@
             </v-card-text>
 
             <v-card-text class="white--text pt-0">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel exercitationem consectetur nulla quasi veniam fugiat, laborum odit ut. Repellat eaque ipsum officiis, maxime odit ducimus consequatur ab libero porro deleniti.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel exercitationem consectetur nulla quasi veniam
+              fugiat, laborum odit ut. Repellat eaque ipsum officiis, maxime odit ducimus consequatur ab libero porro
+              deleniti.
             </v-card-text>
 
             <v-divider></v-divider>
