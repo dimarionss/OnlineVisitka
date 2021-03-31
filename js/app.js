@@ -60,7 +60,7 @@ new Vue({
   }),
   methods: {
     validate() {
-      window.location.href = 'index.html'
+      window.location.href = 'login.html'
       this.$refs.form.validate()
     },
     reset() {
