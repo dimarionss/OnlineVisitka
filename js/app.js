@@ -2,34 +2,26 @@ new Vue({
   el: '#app',
   vuetify: new Vuetify(),
   data: () => ({
-    links: [
-      'Контактные данные',
-      'Редактор визитки',
-      'Галерея',
-      'Страница на доработке',
-    ],
+    // swap left menu ============================
+    drawer: false,
+    group: null,
     selectedItem: 0,
-    items: [{
-        text: 'Настройки',
-        icon: 'mdi-settings'
-      },
-      {
-        text: 'Поделиться',
-        icon: 'mdi-account-multiple'
-      },
-      {
-        text: 'Starred',
-        icon: 'mdi-star'
-      },
-      {
-        text: 'Recent',
-        icon: 'mdi-history'
-      },
-      {
-        text: 'Загрузить',
-        icon: 'mdi-upload'
-      },
+    items: [
+      { text: 'My Files', icon: 'mdi-folder' },
+      { text: 'Shared with me', icon: 'mdi-account-multiple' },
+      { text: 'Starred', icon: 'mdi-star' },
+      { text: 'Recent', icon: 'mdi-history' },
+      { text: 'Offline', icon: 'mdi-check-circle' },
+      { text: 'Uploads', icon: 'mdi-upload' },
+      { text: 'Backups', icon: 'mdi-cloud-upload' },
     ],
+    watch: {
+      group () {
+        this.drawer = false
+      },
+    },
+    // swap left menu ============================
+    selectedItem: 0,
     valid: true,
     email: '',
     emailRules: [
@@ -70,5 +62,5 @@ new Vue({
       this.$refs.form.resetValidation()
     },
   },
-  
+
 })

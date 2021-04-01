@@ -16,7 +16,7 @@
   <div id="app">
     <template>
       <v-app id="inspire">
-        <v-main class="grey lighten-4">
+        <v-main class="grey lighten-4 main__login__block">
           <v-container>
             <v-row class="login__row">
               <v-col cols="12" sm="6" lg="4">
@@ -24,7 +24,7 @@
                   <v-header><v-icon color='black'>mdi-lock</v-icon> Вход</v-header>
                   <v-form ref="form" v-model="valid" lazy-validation>
 
-                    <v-text-field prepend-icon="mdi-account-check-outline" v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+                    <v-text-field :prepend-icon="emailRules ? 'mdi-account-check-outline' : 'mdi-account-off-outline'" v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
 
                     <v-text-field prepend-icon="mdi-key-outline" label="Пароль*" type="password" required></v-text-field>
 
@@ -71,11 +71,7 @@
                               </v-col>
                               <v-col cols="12">
                                 <v-text-field label="Номер телефона*" type="tel" required></v-text-field>
-                              </v-col>
-                              <v-col cols="12" sm="6">
-                                <v-select :items="['0-17', '18-29', '30-54', '54+']" label="Возраст*" required>
-                                </v-select>
-                              </v-col>
+                              </v-col>    
                               <v-col cols="12" sm="6">
                                 <v-autocomplete
                                   :items="['Facebook', 'Instagram', 'Viber', 'Telegram', 'Google', 'LinkedIn', 'Twitter', 'WhatsApp', 'Vkontakte', 'Twitch', 'YouTube', 'Pinterest']"

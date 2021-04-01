@@ -1,21 +1,22 @@
 /*=================================Login====================================*/
-.login__block{
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
+
+.main__login__block{
+  align-items: center;
+  .login__block{
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
+  }
+  .login__row{
+    justify-content: center;
+  }
+  .icon__bar__login{
+    border-top: 2px dashed #333;
+    margin-top: 10px;
+    text-align: center;
+  }
 }
-.login__row{
-  width: 100%;
-  position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  justify-content: center;
-}
-.icon__bar__login{
-  border-top: 2px dashed #333;
-  margin-top: 10px;
-  text-align: center;
-}
+
+
 
 /*=================================Login end====================================*/

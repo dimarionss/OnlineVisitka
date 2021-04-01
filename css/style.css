@@ -145,28 +145,28 @@ h3 {
 
 /*=================================main styles end====================================*/
 /*=================================Login====================================*/
-.login__block {
+.main__login__block {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main__login__block .login__block {
   padding: 10px;
   text-align: center;
   -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
           box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
 }
 
-.login__row {
-  width: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+.main__login__block .login__row {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-.icon__bar__login {
+.main__login__block .icon__bar__login {
   border-top: 2px dashed #333;
   margin-top: 10px;
   text-align: center;
