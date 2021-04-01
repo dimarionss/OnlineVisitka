@@ -99,6 +99,14 @@ h6 {
   background-color: #d3c971;
 }
 
+.link__bottom .v-text-field__details {
+  margin-bottom: -12px !important;
+}
+
+.link__bottom .v-input__slot {
+  margin-bottom: 0 !important;
+}
+
 /*=================================Main Section end====================================*/
 /*=================================main styles ====================================*/
 body {

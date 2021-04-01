@@ -9,5 +9,13 @@
   display: inline-block;
   background-color: rgb(211, 201, 113);
 }
+.link__bottom{
+  .v-text-field__details{
+    margin-bottom: -12px !important;
+  }
+  .v-input__slot{
+    margin-bottom: 0 !important;
+  }
+}
 
 /*=================================Main Section end====================================*/
