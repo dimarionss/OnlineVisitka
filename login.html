@@ -88,8 +88,8 @@
                   </v-card-title>
                   <!--  -->
                 </v-sheet>
-                <v-footer fixed hide-on-scroll horizontal style="bottom: 55px;" class="link__bottom"><v-btn text>
-                  Normal
+                <v-footer fixed hide-on-scroll horizontal style="bottom: 55px;" class='link__bottom' v-show='toggle'><v-btn text>
+                  Копировать
                 </v-btn><v-text-field
                   label="Ваша ссылка на NFC метку"
                   solo
@@ -100,9 +100,9 @@
                 ></v-text-field></v-footer>
                 <v-bottom-navigation fixed hide-on-scroll horizontal scroll-target="#hide-on-scroll-example">
                   
-                  <v-btn color="deep-purple accent-4" text>
+                  <v-btn color="deep-purple accent-4" text @click = "toggle = !toggle">
                     
-                    <span>Recents</span>
+                    <span>NFC</span>
 
                     <v-icon>mdi-history</v-icon>
                   </v-btn>
