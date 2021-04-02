@@ -49,7 +49,8 @@ new Vue({
       'mdi-telegram',
       'mdi-instagram',
     ],
-    toggle: true
+    toggle: false,
+    dialogm1: '',
   }),
   methods: {
     validate() {
