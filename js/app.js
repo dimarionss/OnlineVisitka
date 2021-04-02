@@ -49,6 +49,7 @@ new Vue({
       'mdi-telegram',
       'mdi-instagram',
     ],
+    readlink : false,
     toggle: false,
     dialogm1: '',
     // link social==============================
@@ -67,7 +68,10 @@ new Vue({
       this.$refs.form.resetValidation()
     },
     saveLink(){
-      
+      this.readlink = true
+    },
+    resetLink(){
+      this.readlink = false
     }
   },
 

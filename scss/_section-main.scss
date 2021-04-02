@@ -7,7 +7,7 @@
   width: 50px !important;
   height: 50px !important;
   display: inline-block;
-  background-color: rgb(211, 201, 113);
+  background-color: rgb(0, 0, 0);
 }
 .link__bottom{
   .v-text-field__details{
@@ -23,6 +23,10 @@
 }
 .d_b{
   display: block;
+}
+.visitka__img{
+  border-radius: 50%;
+  text-align: center;
 }
 
 /*=================================Main Section end====================================*/

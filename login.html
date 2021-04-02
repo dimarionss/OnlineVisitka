@@ -67,26 +67,19 @@
                   </v-card-title>
                   <v-card-text>
                     <v-list v-for="icon in icons_add_visitka" :key="icon" class="d-flex">
-                    <v-btn  class="btn__icon mx-4 black--text" icon>
-                      <v-icon size="30px" class="visitka_icon">
-                        {{ icon }}
-                      </v-icon>
-                      
-                    </v-btn>
-                    <v-text-field
-                    label="Solo"
-                    value='saassas'
-                    solo-inverted
-                    
-                    clearable
-                    clear-icon="mdi-close-circle-outline"
-                    append-outer-icon="mdi-content-save-outline"
-                    @click:append-outer="saveLink"
-                  ></v-text-field>
-                </v-list>
+                      <v-btn class="btn__icon mx-4 white--text" icon>
+                        <v-icon size="30px" class="visitka_icon">
+                          {{ icon }}
+                        </v-icon>
+
+                      </v-btn>
+                      <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
+                        clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-lock"
+                        @click:append-outer="saveLink" @click:clear="resetLink"></v-text-field>
+                    </v-list>
                     <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
                       <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="mx-2 btn_main" fab dark color="black" v-bind="attrs" v-on="on">
+                        <v-btn class="mx-2 btn_main" fab dark color="indigo darken-2" v-bind="attrs" v-on="on">
                           <v-icon dark>
                             mdi-plus
                           </v-icon>
@@ -120,11 +113,100 @@
               </v-col>
 
               <v-col cols="12" sm="4">
-                <v-sheet rounded="lg" min-height="250">
+                <v-sheet rounded="lg" min-height="350" style="margin-bottom: 50px;">
                   <v-card-title>
                     <span class="headline">Ваша визитка</span>
                   </v-card-title>
-                  <!--  -->
+                  <v-card max-width="375" class="mx-auto">
+                    <v-list style="background-color: rgb(217, 145, 219);">
+                      <v-row class="fill-height">
+                        <v-card-title>
+                          <v-avatar
+                          class="profile"
+                          color="grey"
+                          size="164"
+                          tile
+                        >
+                          <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                        </v-avatar>
+                          <v-card-title class="white--text pl-12 pt-12">
+                            <div class="display-1 pl-12 pt-12">
+                              Вася Василий
+                            </div>
+                          </v-card-title>
+                      </v-row>
+
+                      <v-list two-line>
+                        <v-list-item>
+                          <v-list-item-icon>
+                            <v-icon color="indigo">
+                              mdi-phone
+                            </v-icon>
+                          </v-list-item-icon>
+
+                          <v-list-item-content>
+                            <v-list-item-title>(650) 555-1234</v-list-item-title>
+                            <v-list-item-subtitle>Мобильный</v-list-item-subtitle>
+                          </v-list-item-content>
+
+                          <v-list-item-icon>
+                            <v-icon>mdi-message-text</v-icon>
+                          </v-list-item-icon>
+                        </v-list-item>
+
+                        <v-list-item>
+                          <v-list-item-action></v-list-item-action>
+
+                          <v-list-item-content>
+                            <v-list-item-title>(323) 555-6789</v-list-item-title>
+                            <v-list-item-subtitle>Рабочий</v-list-item-subtitle>
+                          </v-list-item-content>
+
+                          <v-list-item-icon>
+                            <v-icon>mdi-message-text</v-icon>
+                          </v-list-item-icon>
+                        </v-list-item>
+
+                        <v-divider inset></v-divider>
+
+                        <v-list-item>
+                          <v-list-item-icon>
+                            <v-icon color="indigo">
+                              mdi-email
+                            </v-icon>
+                          </v-list-item-icon>
+
+                          <v-list-item-content>
+                            <v-list-item-title>aliconnors@example.com</v-list-item-title>
+                            <v-list-item-subtitle>Личный</v-list-item-subtitle>
+                          </v-list-item-content>
+                        </v-list-item>
+
+                        <v-list-item>
+                          <v-list-item-action></v-list-item-action>
+
+                          <v-list-item-content>
+                            <v-list-item-title>ali_connors@example.com</v-list-item-title>
+                            <v-list-item-subtitle>Рабочий</v-list-item-subtitle>
+                          </v-list-item-content>
+                        </v-list-item>
+
+                        <v-divider inset></v-divider>
+
+                        <v-list-item>
+                          <v-list-item-icon>
+                            <v-icon color="indigo">
+                              mdi-map-marker
+                            </v-icon>
+                          </v-list-item-icon>
+
+                          <v-list-item-content>
+                            <v-list-item-title>1400 Main улица</v-list-item-title>
+                            <v-list-item-subtitle>Орландо, FL 79938</v-list-item-subtitle>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-list>
+                  </v-card>
                 </v-sheet>
                 <v-footer fixed hide-on-scroll horizontal style="bottom: 55px;" class='link__bottom' v-show='toggle'>
                   <v-tooltip bottom>

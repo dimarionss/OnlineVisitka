@@ -96,7 +96,7 @@ h6 {
   width: 50px !important;
   height: 50px !important;
   display: inline-block;
-  background-color: #d3c971;
+  background-color: black;
 }
 
 .link__bottom .v-text-field__details {
@@ -113,6 +113,12 @@ h6 {
 
 .d_b {
   display: block;
+}
+
+.visitka__img {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  text-align: center;
 }
 
 /*=================================Main Section end====================================*/
