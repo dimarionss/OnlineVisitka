@@ -63,6 +63,9 @@ new Vue({
     resetValidation() {
       this.$refs.form.resetValidation()
     },
+    saveLink(){
+      
+    }
   },
 
 })

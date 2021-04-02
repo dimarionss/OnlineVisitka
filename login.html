@@ -75,8 +75,13 @@
                     </v-btn>
                     <v-text-field
                     label="Solo"
+                    value='ссылка на соц сеть'
                     solo
                     readonly
+                    clearable
+                    clear-icon="mdi-close-circle-outline"
+                    append-outer-icon="mdi-content-save-outline"
+                    @click:append-outer="saveLink"
                   ></v-text-field>
                 </v-list>
                     <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
