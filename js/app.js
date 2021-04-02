@@ -51,6 +51,9 @@ new Vue({
     ],
     toggle: false,
     dialogm1: '',
+    // link social==============================
+    message:'ссылка на соцы сеть',
+    // link social end==============================
   }),
   methods: {
     validate() {
