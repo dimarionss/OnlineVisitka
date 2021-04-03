@@ -18,22 +18,17 @@
       <v-app id="inspire">
         <v-app-bar app color="black darken-1" flat>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-          <v-avatar class="hidden-sm-and-down" color="grey darken-1 shrink" size="32"></v-avatar>
+          <v-avatar color="grey darken-1 shrink" size="50"><v-img src="img/logo_white.png" class="logo__img__mainmenu"></v-img></v-avatar>
+          
         </v-app-bar>
 
         <v-main class="grey lighten-3">
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-sheet min-height="70vh" rounded="lg">
+                <v-sheet rounded="lg">
                   <v-navigation-drawer v-model="drawer" absolute temporary>
                     <v-list>
-                      <v-list-item>
-                        <v-list-item-avatar>
-                          <v-img src="https://cdn.vuetifyjs.com/images/john.png"></v-img>
-                        </v-list-item-avatar>
-                      </v-list-item>
-
                       <v-list-item link>
                         <v-list-item-content>
                           <v-list-item-title class="title">
@@ -62,114 +57,39 @@
                       </v-list-item-group>
                     </v-list>
                   </v-navigation-drawer>
-                  <v-card-title>
-                    <span class="headline">Рабочее место</span>
-                  </v-card-title>
-                  <v-card-text>
-                    <v-list v-for="icon in icons_add_visitka" :key="icon" class="d-flex">
-                      <v-btn class="btn__icon mx-4 white--text" icon>
-                        <v-icon size="30px" class="visitka_icon">
-                          {{ icon }}
-                        </v-icon>
 
-                      </v-btn>
-                      <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
-                        clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-lock"
-                        @click:append-outer="saveLink" @click:clear="resetLink"></v-text-field>
-                    </v-list>
-                    <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="mx-2 btn_main" fab dark color="indigo darken-2" v-bind="attrs" v-on="on">
-                          <v-icon dark>
-                            mdi-plus
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <v-card>
-                        <v-card-title>Select Country</v-card-title>
-                        <v-divider></v-divider>
-                        <v-card-text>
-                          <v-icon size="50px" class="visitka_icon">mdi-telegram</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-facebook</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-instagram</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-twitter</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-google</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-twitch</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-pinterest</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-vkontakte</v-icon>
-                          <v-icon size="50px" class="visitka_icon">mdi-whatsapp</v-icon>
-                        </v-card-text>
-                        <v-divider></v-divider>
-                        <v-card-actions>
-                          <v-btn color="blue darken-1" text @click="dialog = false">
-                            Close
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                  </v-card-text>
 
-                </v-sheet>
-              </v-col>
-
-              <v-col cols="12" sm="4">
-                <v-sheet rounded="lg" min-height="350" style="margin-bottom: 50px;">
+                  <!-- Визитка -->
                   <v-card-title>
                     <span class="headline">Ваша визитка</span>
                   </v-card-title>
                   <v-card max-width="375" class="mx-auto">
-                    <v-list style="background-color: rgb(217, 145, 219);">
+                    <v-list style="background: url('img/fon.jpg') center; background-size: cover;">
                       <v-row class="fill-height">
+
                         <v-card-title>
-                          <v-avatar
-                          class="profile"
-                          color="grey"
-                          size="164"
-                          tile
-                        >
-                          <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
-                        </v-avatar>
-                          <v-card-title class="white--text pl-12 pt-12">
-                            <div class="display-1 pl-12 pt-12">
+                            <v-avatar class="avatar__visitka" class="profile" size="150">
+                              <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                            </v-avatar>
+                          <v-card-title class="white--text">
+                            <div class="display-1">
                               Вася Василий
                             </div>
                           </v-card-title>
                       </v-row>
 
-                      <v-list two-line>
-                        <v-list-item>
-                          <v-list-item-icon>
-                            <v-icon color="indigo">
-                              mdi-phone
-                            </v-icon>
-                          </v-list-item-icon>
-
-                          <v-list-item-content>
-                            <v-list-item-title>(650) 555-1234</v-list-item-title>
-                            <v-list-item-subtitle>Мобильный</v-list-item-subtitle>
-                          </v-list-item-content>
-
-                          <v-list-item-icon>
-                            <v-icon>mdi-message-text</v-icon>
-                          </v-list-item-icon>
-                        </v-list-item>
-
-                        <v-list-item>
-                          <v-list-item-action></v-list-item-action>
-
-                          <v-list-item-content>
-                            <v-list-item-title>(323) 555-6789</v-list-item-title>
-                            <v-list-item-subtitle>Рабочий</v-list-item-subtitle>
-                          </v-list-item-content>
-
-                          <v-list-item-icon>
-                            <v-icon>mdi-message-text</v-icon>
-                          </v-list-item-icon>
-                        </v-list-item>
-
-                        <v-divider inset></v-divider>
-
-                        <v-list-item>
+                      <v-list two-line class="content__visitka" style="text-align: center;">
+                          <v-icon size="60px" class="visitka_icon" style="background: #249bd7;">mdi-telegram</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #3b5998;">mdi-facebook</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #3f729b;">mdi-instagram</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #00acee;">mdi-twitter</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #DD4B39;">mdi-google</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #591381;">mdi-twitch</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #c8232c;">mdi-pinterest</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #50b154;">mdi-whatsapp</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #00aff0;">mdi-skype</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #c4302b;">mdi-youtube</v-icon>
+                        <!-- <v-list-item>
                           <v-list-item-icon>
                             <v-icon color="indigo">
                               mdi-email
@@ -204,10 +124,70 @@
                             <v-list-item-title>1400 Main улица</v-list-item-title>
                             <v-list-item-subtitle>Орландо, FL 79938</v-list-item-subtitle>
                           </v-list-item-content>
-                        </v-list-item>
+                        </v-list-item> -->
                       </v-list>
                   </v-card>
+
                 </v-sheet>
+              </v-col>
+              <!-- Визитка -->
+
+
+              <!-- РАБОЧЕЕ МЕСТО -->
+              <v-col cols="12" sm="4">
+                <v-sheet rounded="lg" min-height="350" style="margin-bottom: 50px;">
+                  <v-card-title>
+                    <span class="headline">Рабочее место</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-list v-for="icon in icons_add_visitka" :key="icon" class="d-flex">
+                      <v-btn class="btn__icon mx-4 white--text" icon>
+                        <v-icon size="30px" class="visitka_icon">
+                          {{ icon }}
+                        </v-icon>
+
+                      </v-btn>
+                      <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
+                        clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-lock"
+                        @click:append-outer="saveLink" @click:clear="resetLink"></v-text-field>
+                    </v-list>
+                    <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
+                      <template v-slot:activator="{ on, attrs }">
+                        <v-btn class="mx-2 btn_main" fab dark color="indigo darken-2" v-bind="attrs" v-on="on">
+                          <v-icon dark>
+                            mdi-plus
+                          </v-icon>
+                        </v-btn>
+                      </template>
+                      <v-card>
+                        <v-card-title>Select Country</v-card-title>
+                        <v-divider></v-divider>
+                        <v-card-text>
+                          <v-icon size="60px" class="visitka_icon" style="background: #249bd7;">mdi-telegram</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #3b5998;">mdi-facebook</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #3f729b;">mdi-instagram</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #00acee;">mdi-twitter</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #DD4B39;">mdi-google</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #591381;">mdi-twitch</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #c8232c;">mdi-pinterest</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #50b154;">mdi-whatsapp</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #00aff0;">mdi-skype</v-icon>
+                          <v-icon size="60px" class="visitka_icon" style="background: #c4302b;">mdi-youtube</v-icon>
+                        </v-card-text>
+                        <v-divider></v-divider>
+                        <v-card-actions>
+                          <v-btn color="blue darken-1" text @click="dialog = false">
+                            Close
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                  </v-card-text>
+                </v-sheet>
+                <!-- РАБОЧЕЕ МЕСТО -->
+
+
+                <!-- Подвал -->
                 <v-footer fixed hide-on-scroll horizontal style="bottom: 55px;" class='link__bottom' v-show='toggle'>
                   <v-tooltip bottom>
                     <template v-slot:activator="{ on, attrs }">
@@ -241,6 +221,10 @@
                     <v-icon>mdi-map-marker</v-icon>
                   </v-btn>
                 </v-bottom-navigation>
+
+
+
+                <!-- Подвал -->
               </v-col>
             </v-row>
           </v-container>
