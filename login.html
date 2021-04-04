@@ -132,6 +132,38 @@
                             <v-list-item-subtitle>Орландо, FL 79938</v-list-item-subtitle>
                           </v-list-item-content>
                         </v-list-item> -->
+                        <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
+                          <template v-slot:activator="{ on, attrs }">
+                            <div>
+                            <v-btn class="mx-2 btn_main" fab dark color="black lighten-2" v-bind="attrs" v-on="on">
+                              <v-icon dark size="40px" >
+                                mdi-plus
+                              </v-icon>
+                            </v-btn>
+                            <p class="text__icon__block" style='margin: 3px;'>Добавить ссылку</p>
+                          </div>
+                          </template>
+                          <v-card>
+                            <v-card-title>Select Country</v-card-title>
+                            <v-divider></v-divider>
+                            <v-card-text class="icon__dialog__block">
+                              <div v-for="icon in icon_dialog">
+                              <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon" @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon)'>
+                              <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                            </v-btn>
+                            <p class="text__icon__block">{{icon.name_icon}}</p>
+                          </div>
+                          </div>
+                           
+                            </v-card-text>
+                            <v-divider></v-divider>
+                            <v-card-actions>
+                              <v-btn color="blue darken-1" text @click="dialog = false">
+                                Close
+                              </v-btn>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
                       </v-card-text>
                       </v-list>
                   </v-card>
@@ -159,35 +191,7 @@
                         clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-lock"
                         @click:append-outer="saveLink" @click:clear="resetLink"></v-text-field>
                     </v-list>
-                    <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
-                      <template v-slot:activator="{ on, attrs }">
-                        <v-btn class="mx-2 btn_main" fab dark color="indigo darken-2" v-bind="attrs" v-on="on">
-                          <v-icon dark>
-                            mdi-plus
-                          </v-icon>
-                        </v-btn>
-                      </template>
-                      <v-card>
-                        <v-card-title>Select Country</v-card-title>
-                        <v-divider></v-divider>
-                        <v-card-text class="icon__dialog__block">
-                          <div v-for="icon in icon_dialog">
-                          <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon" @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon)'>
-                          <v-icon size="60px">{{ icon.text_icon }}</v-icon>
-                        </v-btn>
-                        <p class="text__icon__block">{{icon.name_icon}}</p>
-                      </div>
-                      </div>
-                       
-                        </v-card-text>
-                        <v-divider></v-divider>
-                        <v-card-actions>
-                          <v-btn color="blue darken-1" text @click="dialog = false">
-                            Close
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
+                    
                   </v-card-text>
                 </v-sheet>
                 <!-- РАБОЧЕЕ МЕСТО -->

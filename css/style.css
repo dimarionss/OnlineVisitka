@@ -170,6 +170,10 @@ h6 {
       -ms-flex-wrap: wrap;
           flex-wrap: wrap;
   padding: 5px !important;
+  -webkit-box-align: baseline;
+  -webkit-align-items: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
       -ms-flex-pack: center;
