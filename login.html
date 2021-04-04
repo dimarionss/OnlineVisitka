@@ -91,7 +91,7 @@
                         </v-card-title>
                         <v-card-text class="icon__dialog__block">
                         <div v-for="icon in icons_add_visitka">
-                          <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon" @click='add_form_icon(icon.text_icon, icon.color_icon)'>
+                          <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon">
                           <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                         </v-btn>
                         <p class="text__icon__block">{{icon.name_icon}}</p>
