@@ -93,10 +93,15 @@ h6 {
 /*=================================Header end====================================*/
 /*=================================Main Section====================================*/
 .btn__icon {
-  width: 50px !important;
-  height: 50px !important;
+  width: 80px !important;
+  height: 80px !important;
   display: inline-block;
-  background-color: black;
+}
+
+.btn__icon__form {
+  width: 45px !important;
+  height: 45px !important;
+  display: inline-block;
 }
 
 .link__bottom .v-text-field__details {
@@ -137,9 +142,6 @@ h6 {
 }
 
 .visitka_icon {
-  display: inline-block;
-  width: 80px;
-  height: 80px;
   margin: 10px;
   background-color: black;
   -webkit-border-radius: 15px;
