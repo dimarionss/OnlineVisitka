@@ -88,6 +88,7 @@ new Vue({
     },
     add_form_icon(text_icon, color_icon, name_icon){
         this.icons_add_visitka.push({text_icon:text_icon, color_icon:color_icon, name_icon: name_icon})
+        this.dialog = false
     }
   },
   computed: {
