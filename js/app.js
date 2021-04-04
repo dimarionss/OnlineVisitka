@@ -55,6 +55,8 @@ new Vue({
     // link social==============================
     message:'ссылка на соцы сеть',
     // link social end==============================
+
+    show: false
   }),
   methods: {
     validate() {
@@ -74,5 +76,13 @@ new Vue({
       this.readlink = false
     }
   },
-
+  computed: {
+    btnText: function() {
+      if(this.show) {
+        return 'Аккаунт закрыт'
+      }
+      
+      return 'Аккаунт открыт'
+    }
+  }
 })

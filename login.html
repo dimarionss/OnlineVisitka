@@ -18,8 +18,10 @@
       <v-app id="inspire">
         <v-app-bar app color="black darken-1" flat>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-          <v-avatar color="grey darken-1 shrink" size="50"><v-img src="img/logo_white.PNG" class="logo__img__mainmenu"></v-img></v-avatar>
-          
+          <v-avatar color="grey darken-1 shrink" size="50">
+            <v-img src="img/logo_white.PNG" class="logo__img__mainmenu"></v-img>
+          </v-avatar>
+
         </v-app-bar>
 
         <v-main class="grey lighten-3">
@@ -63,36 +65,44 @@
                   <v-card-title>
                     <span class="headline">Ваша визитка</span>
                   </v-card-title>
-                  <v-card max-width="375" class="mx-auto">
+                  <v-card max-width="375" class="mx-auto main__img">
                     <v-list style="background: url('img/fon.jpg') center; background-size: cover;">
                       <v-row class="fill-height">
 
-                        <v-card-title>
-                            <v-avatar class="avatar__visitka" class="profile" size="150">
-                              <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
-                            </v-avatar>
-                          <v-card-title class="white--text">
-                            <div class="display-1">
-                              Вася Василий
-                            </div>
-                          </v-card-title>
+                        <v-avatar class="avatar__visitka" class="profile" size="150">
+                          <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                        </v-avatar>
+
+
                       </v-row>
 
                       <v-list two-line class="content__visitka" style="text-align: center;">
-                          <v-icon size="60px" class="visitka_icon" style="background: #249bd7;">mdi-telegram</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #3b5998;">mdi-facebook</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #3f729b;">mdi-instagram</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #00acee;">mdi-twitter</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #DD4B39;">mdi-google</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #591381;">mdi-twitch</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #c8232c;">mdi-pinterest</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #50b154;">mdi-whatsapp</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #00aff0;">mdi-skype</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #c4302b;">mdi-youtube</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #5d84ae;">mdi-vk</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #f93;">mdi-odnoklassniki</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #0e76a8;">mdi-linkedin</v-icon>
-                          <v-icon size="60px" class="visitka_icon" style="background: #665CAC;">fab fa-viber</v-icon>
+                        <v-card-title class="black--text mt-15 flex-column">
+                          <div class="display-1">
+                            Вася Василий
+                          </div>
+                          <v-btn
+                          :class="show ? 'black__btn' : 'white__btn'"
+                          class="mt-5 btn_main"
+                          raised
+                          @click="show = !show"
+                          
+                        >{{ btnText }}</v-btn>
+                        </v-card-title>
+                        <v-icon size="60px" class="visitka_icon" style="background: #249bd7;">mdi-telegram</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #3b5998;">mdi-facebook</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #3f729b;">mdi-instagram</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #00acee;">mdi-twitter</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #DD4B39;">mdi-google</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #591381;">mdi-twitch</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #c8232c;">mdi-pinterest</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #50b154;">mdi-whatsapp</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #00aff0;">mdi-skype</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #c4302b;">mdi-youtube</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #5d84ae;">mdi-vk</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #f93;">mdi-odnoklassniki</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #0e76a8;">mdi-linkedin</v-icon>
+                        <v-icon size="60px" class="visitka_icon" style="background: #665CAC;">fab fa-viber</v-icon>
                         <!-- <v-list-item>
                           <v-list-item-icon>
                             <v-icon color="indigo">
