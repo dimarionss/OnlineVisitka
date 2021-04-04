@@ -37,6 +37,7 @@ new Vue({
     ],
     checkbox: false,
     dialog: false,
+    dialog_edit: false,
     icons_footer: [
       'mdi-facebook',
       'mdi-google',
