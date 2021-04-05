@@ -146,7 +146,7 @@ new Vue({
 
     show: false,
     
-      
+      // =======================cropp======================== 
       cropper: null,
       cropperava: null,
       objectUrl: null,
@@ -155,6 +155,7 @@ new Vue({
       previewCroppedava: null,
       selectedFile: null,
       selectedFileava: null,
+      // =======================cropp======================== 
   }),
   
   methods: {
