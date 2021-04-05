@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta charset="UTF-8">
@@ -19,8 +19,8 @@
       <v-app id="inspire">
         <v-app-bar app color="black darken-1" flat style='z-index: 10;'>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-          <v-avatar color="grey darken-1 shrink" size="50" class="logo__img__mainmenu">
-            <v-img src="img/logo_white.PNG"></v-img>
+          <v-avatar color="shrink" size="50" class="logo__img__mainmenu" width='100'>
+            <v-img src="img/logo_notbg.PNG"></v-img>
           </v-avatar>
 
         </v-app-bar>
@@ -29,155 +29,165 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                  <v-navigation-drawer v-model="drawer" fixed temporary style='top: 56px;'>
-                    <v-list>
-                      <v-list-item link>
+                <v-navigation-drawer v-model="drawer" fixed temporary style='top: 56px;'>
+                  <v-list>
+                    <v-list-item link>
+                      <v-list-item-content>
+                        <v-list-item-title class="title">
+                          Джон Пупкин
+                        </v-list-item-title>
+                        <v-list-item-subtitle>john@vsdfw.com</v-list-item-subtitle>
+                      </v-list-item-content>
+
+                      <v-list-item-action>
+                        <v-icon>mdi-menu-down</v-icon>
+                      </v-list-item-action>
+                    </v-list-item>
+                  </v-list>
+                  <v-divider></v-divider>
+                  <v-list nav dense>
+                    <v-list-item-group v-model="selectedItem" color="black">
+                      <v-list-item v-for="(item, i) in items" :key="i">
+                        <v-list-item-icon>
+                          <v-icon v-text="item.icon"></v-icon>
+                        </v-list-item-icon>
+
                         <v-list-item-content>
-                          <v-list-item-title class="title">
-                            Джон Пупкин
-                          </v-list-item-title>
-                          <v-list-item-subtitle>john@vsdfw.com</v-list-item-subtitle>
+                          <v-list-item-title v-text="item.text"></v-list-item-title>
                         </v-list-item-content>
-
-                        <v-list-item-action>
-                          <v-icon>mdi-menu-down</v-icon>
-                        </v-list-item-action>
                       </v-list-item>
-                    </v-list>
-                    <v-divider></v-divider>
-                    <v-list nav dense>
-                      <v-list-item-group v-model="selectedItem" color="black">
-                        <v-list-item v-for="(item, i) in items" :key="i">
-                          <v-list-item-icon>
-                            <v-icon v-text="item.icon"></v-icon>
-                          </v-list-item-icon>
-
-                          <v-list-item-content>
-                            <v-list-item-title v-text="item.text"></v-list-item-title>
-                          </v-list-item-content>
-                        </v-list-item>
-                      </v-list-item-group>
-                    </v-list>
-                  </v-navigation-drawer>
+                    </v-list-item-group>
+                  </v-list>
+                </v-navigation-drawer>
 
 
-                  <!-- Визитка -->
+                <!-- Визитка -->
 
-                    <v-list style="background: url('img/fon.jpg') center; background-size: cover;" max-width="375" class="mx-auto main__img" rounded>
-                      <v-row class="fill-height">
+                <v-list style="background: url('img/fon.jpg') center; background-size: cover; border-radius:10px;"
+                  max-width="375" class="mx-auto main__img">
+                  <v-row class="fill-height">
 
-                        <v-avatar class="avatar__visitka" class="profile" size="150">
-                          <v-img src="img/woomen.jpg"></v-img>
-                        </v-avatar>
+                    <v-avatar class="avatar__visitka" class="profile" size="150">
+                      <v-img src="img/woomen.jpg"></v-img>
+                    </v-avatar>
 
 
-                      </v-row>
+                  </v-row>
 
-                      <v-list two-line class="content__visitka" style="text-align: center;">
-                        <v-card-title class="black--text mt-15 flex-column">
-                        
-                          <div class="display-1">
-                            Наталья Измаилова
-                          </div>
-                          <v-card-text>Мастер Визажист</v-card-text>
-                          <v-list-text>Твой лучший маникюр и педикюр🤍. Каждый месяц более 700 довольных клиентов</v-list-text>
-                          
-                          <v-card-text><v-icon left>
-                            mdi-map
-                          </v-icon>вулиця Калинова, 53, Дніпро, Дніпропетровська область</v-card-text>
+                  <v-list two-line class="content__visitka" style="text-align: center;">
+                    <v-card-title class="black--text mt-15 flex-column">
+
+                      <div class="display-1">
+                        Наталья Измаилова
+                      </div>
+                      <v-card-text>Мастер Визажист</v-card-text>
+                      <v-list-text class="opis_visitka">Базовые курсы, повышение квалификации.
+                        Маникюр
+                        Покрытие гель-лаком
+                        Педикюр
+                        Стерильно (кварцевая лампа, сухожар, одноразовые расходники)
+                        Предварительная запись</v-list-text>
+
+                      <v-card-text>
+                        <v-icon left>
+                          mdi-map
+                        </v-icon>вулиця Калинова, 53, Дніпро, Дніпропетровська область
+                      </v-card-text>
+                    </v-card-title>
+                    <v-btn :class="show ? 'black__btn' : 'white__btn'" class="mt-3 mb-3 btn_main" raised
+                      @click="show = !show">{{ btnText }}</v-btn>
+
+
+
+                    <!-- modal registracion -->
+                    <v-dialog v-model="dialog_edit" persistent max-width="600px">
+                      <template v-slot:activator="{ on: onEdit, attrs: editModal }">
+                        <v-btn class="black__btn btn_main" class="mt-3 mb-3 btn_main" raised v-bind="editModal"
+                          v-on="onEdit">
+                          <v-icon left>
+                            mdi-pencil
+                          </v-icon>Редактировать
+                        </v-btn>
+                      </template>
+                      <v-card>
+                        <v-card-title>
+                          <span class="headline">Профиль</span>
                         </v-card-title>
-                        <v-btn :class="show ? 'black__btn' : 'white__btn'" class="mt-3 mb-3 btn_main" raised
-                          @click="show = !show">{{ btnText }}</v-btn>
+
+                        <v-card-text>
+                          <v-container>
+                            <v-row>
+                              <v-col cols="12">
 
 
+                                <cropper ref="source" :src="objectUrl" :stencil-props="{ aspectRatio: 16/9 }"
+                                  @change="change"></cropper>
 
-                        <!-- modal registracion -->
-                        <v-dialog v-model="dialog_edit" persistent max-width="600px">
-                          <template v-slot:activator="{ on: onEdit, attrs: editModal }">
-                            <v-btn class="black__btn btn_main" class="mt-3 mb-3 btn_main" raised v-bind="editModal"
-                              v-on="onEdit">
-                              <v-icon left>
-                                mdi-pencil
-                              </v-icon>Редактировать
-                            </v-btn>
-                          </template>
-                          <v-card>
-                            <v-card-title>
-                              <span class="headline">Профиль</span>
-                            </v-card-title>
+                                <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFile"
+                                  accept="image/png, image/jpeg" label="Фото" placeholder="Выберите обложку"
+                                  :show-size="1024" @change="setupCropper">
+                                </v-file-input>
 
-                            <v-card-text>
-                              <v-container>
-                                <v-row>
-                                  <v-col cols="12">
+                              </v-col>
+                              <v-col cols="12">
+                                <cropper :src="objectUrlava" :auto-zoom="true"
+                                  :stencil-size="{ width: 280,	height: 280	}" image-restriction="stencil"
+                                  stencil-component="circle-stencil"></cropper>
+                                <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFileava"
+                                  accept="image/png, image/jpeg" placeholder="Выберите фото профиля" :show-size="1024"
+                                  @change="setupCropperava" label="Аватар">
 
-
-                                    <cropper ref="source" :src="objectUrl" :stencil-props="{ aspectRatio: 16/9 }"
-                                      @change="change"></cropper>
-
-                                    <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFile"
-                                      accept="image/png, image/jpeg" label="Фото" placeholder="Выберите обложку"
-                                      :show-size="1024" @change="setupCropper">
-                                    </v-file-input>
-
-                                  </v-col>
-                                  <v-col cols="12">
-                                    <cropper :src="objectUrlava" :auto-zoom="true" :stencil-size="{ width: 280,	height: 280	}"
-                                      image-restriction="stencil" stencil-component="circle-stencil"></cropper>
-                                    <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFileava"
-                                      accept="image/png, image/jpeg" placeholder="Выберите фото профиля"
-                                      :show-size="1024" @change="setupCropperava" label="Аватар">
-                                      
-                                    </v-file-input>
-                                  </v-col>
-                                  <v-col cols="12" sm="6" md="4">
-                                    <v-text-field label="Имя" required></v-text-field>
-                                  </v-col>
-                                  <v-col cols="12" sm="6" md="4">
-                                    <v-text-field label="Фамилия">
-                                    </v-text-field>
-                                  </v-col>
-                                  <v-col cols="12" sm="6" md="4">
-                                    <v-text-field label="Название фирмы или напраление" hint="Например: Салон красоты, мастер визажист  "
-                                      persistent-hint required></v-text-field>
-                                  </v-col>
-                                  <v-col cols="12">
-                                    <v-text-field label="Email" required></v-text-field>
-                                  </v-col>
-                                  <v-col cols="12">
-                                    <v-text-field label="Пароль" type="password" required></v-text-field>
-                                  </v-col>
-                                  <v-col cols="12">
-                                    <v-text-field label="Номер телефона" type="tel" required></v-text-field>
-                                  </v-col>
-                                  <v-col cols="12">
-                                    <v-text-field label="Адрес" type="text" required></v-text-field>
-                                  </v-col>
-                                </v-row>
-                              </v-container>
-                            </v-card-text>
-                            <v-card-actions>
-                              <v-spacer></v-spacer>
-                              <v-btn color="black darken-1" text @click="dialog_edit = false">
-                                Закрыть
-                              </v-btn>
-                              <v-btn color="black darken-1" text @click="dialog_edit = false">
-                                Сохранить
-                              </v-btn>
-                            </v-card-actions>
-                          </v-card>
-                        </v-dialog>
-                        <!-- modal registracion end-->
+                                </v-file-input>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Имя" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Фамилия">
+                                </v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Название фирмы или напраление"
+                                  hint="Например: Салон красоты, мастер визажист  " persistent-hint required>
+                                </v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Email" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Пароль" type="password" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Номер телефона" type="tel" required></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-text-field label="Адрес" type="text" required></v-text-field>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="black darken-1" text @click="dialog_edit = false">
+                            Закрыть
+                          </v-btn>
+                          <v-btn color="black darken-1" text @click="dialog_edit = false">
+                            Сохранить
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                    <!-- modal registracion end-->
 
 
-                        <v-card-text class="icon__dialog__block">
-                          <div v-for="icon in icons_add_visitka">
-                            <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon">
-                              <v-icon size="60px">{{ icon.text_icon }}</v-icon>
-                            </v-btn>
-                            <p class="text__icon__block">{{icon.name_icon}}</p>
-                          </div>
-                          <!-- <v-list-item>
+                    <v-card-text class="icon__dialog__block">
+                      <div v-for="icon in icons_add_visitka">
+                        <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon">
+                          <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                        </v-btn>
+                        <p class="text__icon__block">{{icon.name_icon}}</p>
+                      </div>
+                      <!-- <v-list-item>
                           <v-list-item-icon>
                             <v-icon color="indigo">
                               mdi-email
@@ -213,29 +223,29 @@
                             <v-list-item-subtitle>Орландо, FL 79938</v-list-item-subtitle>
                           </v-list-item-content>
                         </v-list-item> -->
-                          <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
-                            <template v-slot:activator="{ on: modalIcon, attrs: iconModal }">
-                              <div>
-                                <v-btn class="mx-2 btn_main" fab dark color="black lighten-2" v-bind="iconModal"
-                                  v-on="modalIcon">
-                                  <v-icon dark size="40px">
-                                    mdi-plus
-                                  </v-icon>
-                                </v-btn>
-                                <p class="text__icon__block" style='margin: 3px;'>Добавить ссылку</p>
-                              </div>
-                            </template>
-                            <v-card>
-                              <v-card-title>Выберите ссылку на социальную сеть</v-card-title>
-                              <v-divider></v-divider>
-                              <v-card-text class="icon__dialog__block">
-                                <div v-for="icon in icon_dialog">
-                                  <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon"
-                                    @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon)'>
-                                    <v-icon size="60px">{{ icon.text_icon }}</v-icon>
-                                  </v-btn>
-                                  <p class="text__icon__block">{{icon.name_icon}}</p>
-                                </div>
+                      <v-dialog v-model="dialog" scrollable max-width="300px" fullscreen>
+                        <template v-slot:activator="{ on: modalIcon, attrs: iconModal }">
+                          <div>
+                            <v-btn class="mx-2 btn_main" fab dark color="black lighten-2" v-bind="iconModal"
+                              v-on="modalIcon">
+                              <v-icon dark size="40px">
+                                mdi-plus
+                              </v-icon>
+                            </v-btn>
+                            <p class="text__icon__block" style='margin: 3px;'>Добавить ссылку</p>
+                          </div>
+                        </template>
+                        <v-card>
+                          <v-card-title>Выберите ссылку на социальную сеть</v-card-title>
+                          <v-divider></v-divider>
+                          <v-card-text class="icon__dialog__block">
+                            <div v-for="icon in icon_dialog">
+                              <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon"
+                                @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon)'>
+                                <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                              </v-btn>
+                              <p class="text__icon__block">{{icon.name_icon}}</p>
+                            </div>
   </div>
 
   </v-card-text>

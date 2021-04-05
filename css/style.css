@@ -141,6 +141,13 @@ h6 {
   margin-left: 33% !important;
 }
 
+.opis_visitka {
+  text-transform: uppercase;
+  font-weight: 400;
+  text-align: justify;
+  white-space: pre-line;
+}
+
 .visitka_icon {
   margin: 10px;
   background-color: black;
