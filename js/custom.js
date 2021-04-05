@@ -14,3 +14,4 @@ $('img.img-svg').each(function () {
     $img.replaceWith($svg);
   }, 'xml');
 });
+

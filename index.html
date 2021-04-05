@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
   <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/style.css">
   <title>OnlineVisitka</title>
 </head>
 
@@ -51,8 +52,12 @@
                           <v-container>
                             <v-row>
                               <v-col cols="12">
-                                <v-file-input :rules="rules" accept="image/png, image/jpeg, image/bmp"
-                                  placeholder="Выберите фото" prepend-icon="mdi-camera" label="Аватар"></v-file-input>
+                                <cropper :src="objectUrlava" :auto-zoom="true" :stencil-size="{ width: 280,	height: 280	}"
+                                      image-restriction="stencil"></cropper>
+                                    <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFileava"
+                                      accept="image/png, image/jpeg" placeholder="Выберите фото профиля"
+                                      :show-size="1024" @change="setupCropperava" label="Аватар">
+                                    </v-file-input>
                               </v-col>
                               <v-col cols="12" sm="6" md="4">
                                 <v-text-field label="Имя*" required></v-text-field>
@@ -163,6 +168,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
   <script src="js/app.js"></script>
   <script src="js/JQuery.min.js"></script>
+  <script src="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/index.umd.js"></script>
   <script src="js/custom.js"></script>
 </body>
 
