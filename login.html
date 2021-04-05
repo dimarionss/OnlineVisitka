@@ -19,8 +19,8 @@
       <v-app id="inspire">
         <v-app-bar app color="black darken-1" flat style='z-index: 10;'>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
-          <v-avatar color="grey darken-1 shrink" size="50">
-            <v-img src="img/logo_white.PNG" class="logo__img__mainmenu"></v-img>
+          <v-avatar color="grey darken-1 shrink" size="50" class="logo__img__mainmenu">
+            <v-img src="img/logo_white.PNG"></v-img>
           </v-avatar>
 
         </v-app-bar>
@@ -29,7 +29,6 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-sheet rounded="lg">
                   <v-navigation-drawer v-model="drawer" fixed temporary style='top: 56px;'>
                     <v-list>
                       <v-list-item link>
@@ -63,11 +62,8 @@
 
 
                   <!-- Визитка -->
-                  <v-card-title>
-                    <span class="headline">Ваша визитка</span>
-                  </v-card-title>
-                  <v-card max-width="375" class="mx-auto main__img">
-                    <v-list style="background: url('img/fon.jpg') center; background-size: cover;">
+
+                    <v-list style="background: url('img/fon.jpg') center; background-size: cover;" max-width="375" class="mx-auto main__img" rounded>
                       <v-row class="fill-height">
 
                         <v-avatar class="avatar__visitka" class="profile" size="150">
@@ -79,10 +75,13 @@
 
                       <v-list two-line class="content__visitka" style="text-align: center;">
                         <v-card-title class="black--text mt-15 flex-column">
-                          <v-card-text>Мастер Визажист</v-card-text>
+                        
                           <div class="display-1">
                             Наталья Измаилова
                           </div>
+                          <v-card-text>Мастер Визажист</v-card-text>
+                          <v-list-text>Твой лучший маникюр и педикюр🤍. Каждый месяц более 700 довольных клиентов</v-list-text>
+                          
                           <v-card-text><v-icon left>
                             mdi-map
                           </v-icon>вулиця Калинова, 53, Дніпро, Дніпропетровська область</v-card-text>
@@ -227,7 +226,7 @@
                               </div>
                             </template>
                             <v-card>
-                              <v-card-title>Select Country</v-card-title>
+                              <v-card-title>Выберите ссылку на социальную сеть</v-card-title>
                               <v-divider></v-divider>
                               <v-card-text class="icon__dialog__block">
                                 <div v-for="icon in icon_dialog">
@@ -250,9 +249,6 @@
   </v-dialog>
   </v-card-text>
   </v-list>
-  </v-card>
-
-  </v-sheet>
   </v-col>
   <!-- Визитка -->
 
