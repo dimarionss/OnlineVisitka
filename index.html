@@ -53,7 +53,7 @@
                             <v-row>
                               <v-col cols="12">
                                 <cropper :src="objectUrlava" :auto-zoom="true" :stencil-size="{ width: 280,	height: 280	}"
-                                      image-restriction="stencil"></cropper>
+                                      image-restriction="stencil" stencil-component="circle-stencil"></cropper>
                                     <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFileava"
                                       accept="image/png, image/jpeg" placeholder="Выберите фото профиля"
                                       :show-size="1024" @change="setupCropperava" label="Аватар">
