@@ -41,7 +41,7 @@
   // position: absolute;
   // top: 0;
   // left: 50%;
-  margin: 25% auto -15% auto;
+  margin: -15% auto -15% auto;
   border: 4px solid #fff;
 }
 
@@ -52,15 +52,17 @@
 }
 
 .logo__img__mainmenu {
-  margin-left: 33% !important;
+  margin-left: 27% !important;
 }
 
 .opis_visitka {
   text-transform: uppercase;
-  font-weight: 400;
-  text-align: justify;
-  white-space: pre-line;
-  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+  // white-space: pre-line;
+  word-break: normal;
+  font-size: 10px;
+  line-height: 2;
 }
 
 .visitka_icon {
