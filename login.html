@@ -71,7 +71,7 @@
                       <v-row class="fill-height">
 
                         <v-avatar class="avatar__visitka" class="profile" size="150">
-                          <v-img src="https://cdn.vuetifyjs.com/images/profiles/marcus.jpg"></v-img>
+                          <v-img src="img/woomen.jpg"></v-img>
                         </v-avatar>
 
 
@@ -79,9 +79,13 @@
 
                       <v-list two-line class="content__visitka" style="text-align: center;">
                         <v-card-title class="black--text mt-15 flex-column">
+                          <v-card-text>Мастер Визажист</v-card-text>
                           <div class="display-1">
                             Вася Василий
                           </div>
+                          <v-card-text><v-icon left>
+                            mdi-map
+                          </v-icon>вулиця Калинова, 53, Дніпро, Дніпропетровська область</v-card-text>
                         </v-card-title>
                         <v-btn :class="show ? 'black__btn' : 'white__btn'" class="mt-3 mb-3 btn_main" raised
                           @click="show = !show">{{ btnText }}</v-btn>
@@ -91,7 +95,7 @@
                         <!-- modal registracion -->
                         <v-dialog v-model="dialog_edit" persistent max-width="600px">
                           <template v-slot:activator="{ on: onEdit, attrs: editModal }">
-                            <v-btn class="black__btn" class="mt-3 mb-3 btn_main" raised v-bind="editModal"
+                            <v-btn class="black__btn btn_main" class="mt-3 mb-3 btn_main" raised v-bind="editModal"
                               v-on="onEdit">
                               <v-icon left>
                                 mdi-pencil

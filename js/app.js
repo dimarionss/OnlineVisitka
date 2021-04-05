@@ -64,7 +64,21 @@ new Vue({
       'mdi-telegram',
       'mdi-instagram',
     ],
-    icons_add_visitka: [],
+    icons_add_visitka: [{
+      text_icon: 'mdi-telegram',
+      color_icon: 'background: #249bd7;',
+      name_icon: 'Telegram'
+    },
+    {
+      text_icon: 'mdi-facebook',
+      color_icon: 'background: #3b5998;',
+      name_icon: 'Facebook'
+    },
+    {
+      text_icon: 'mdi-instagram',
+      color_icon: 'background: #3f729b;',
+      name_icon: 'Instagram'
+    },],
     icon_dialog: [{
         text_icon: 'mdi-telegram',
         color_icon: 'background: #249bd7;',
