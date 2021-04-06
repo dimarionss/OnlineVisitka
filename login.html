@@ -63,9 +63,9 @@
 
                 <!-- Визитка -->
 
-                <v-list style="border-radius:10px; position: relative;"
-                  max-width="375" class="mx-auto main__img">
-                  <v-img src="img/fon.jpg" height='180px' style="margin-top: -8px; border-top-right-radius:10px; border-top-left-radius:10px;"></v-img>
+                <v-list style="border-radius:10px; position: relative;" max-width="375" class="mx-auto main__img">
+                  <v-img src="img/fon.jpg" height='180px'
+                    style="margin-top: -8px; border-top-right-radius:10px; border-top-left-radius:10px;"></v-img>
                   <v-row class="fill-height">
 
                     <v-avatar class="avatar__visitka" class="profile" size="150">
@@ -270,7 +270,9 @@
         <span class="headline">Рабочее место</span>
       </v-card-title>
       <v-card-text class="work__place">
-        <v-btn @click='readlink = !readlink' class="btn__lock"><v-icon>{{ linkIcon }}</v-icon></v-btn>
+        <v-btn @click='readlink = !readlink' class="btn__lock">
+          <v-icon>{{ linkIcon }}</v-icon>
+        </v-btn>
         <v-list v-for="(icon, index) in icons_add_visitka" class="d-flex">
           <v-btn class="btn__icon__form white--text visitka_icon" icon :style="icon.color_icon">
             <v-icon size="35px">
