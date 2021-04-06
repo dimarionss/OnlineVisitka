@@ -182,8 +182,8 @@
 
 
                     <v-card-text class="icon__dialog__block">
-                      <div v-for="icon in icons_add_visitka">
-                        <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon">
+                      <div v-for="icon in icons_add_visitka" :class="show ? 'opacity_icon' : ''">
+                        <v-btn class="btn__icon visitka_icon"  text icon :style="icon.color_icon">
                           <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                         </v-btn>
                         <p class="text__icon__block">{{icon.name_icon}}</p>

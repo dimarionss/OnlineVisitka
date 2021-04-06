@@ -96,6 +96,9 @@
     font-weight: 700;
     text-align: center;
   }
+  .opacity_icon:not(:nth-child(1)){
+    opacity: 40%;
+  }
 }
 .work__place{
   display: flex;
