@@ -150,7 +150,7 @@ new Vue({
         name_icon: 'Viber'
       },
     ],
-    
+
     readlink: false,
     toggle: false,
     dialogm1: '',
@@ -183,11 +183,10 @@ new Vue({
     resetValidation() {
       this.$refs.form.resetValidation()
     },
-    saveLink() {
-      this.readlink = true
-    },
+    
     resetLink() {
       this.readlink = false
+      this.linkIcon = 'mdi-lock-open-variant'
     },
     deleteIcon(index){
       this.icons_add_visitka.splice(index, 1)
@@ -258,7 +257,13 @@ new Vue({
       }
 
       return 'Аккаунт вкл.'
-    }
+    },
+    linkIcon: function() {
+      if (this.readlink) {
+        return 'mdi-lock'
+      } 
+      return 'mdi-lock-open-variant'    
+    },
   }
   
 })

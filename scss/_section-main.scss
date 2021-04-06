@@ -97,5 +97,14 @@
     text-align: center;
   }
 }
+.work__place{
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .btn__lock{
+      margin-bottom: 20px;
+    }
+}
 
 /*=================================Main Section end====================================*/
