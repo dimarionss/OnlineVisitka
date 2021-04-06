@@ -82,12 +82,12 @@
                         Наталья Измаилова
                       </div>
                       <v-card-text>Мастер Визажист</v-card-text>
-                      <v-list-text class="opis_visitka">Базовые курсы, повышение квалификации.
-                        Маникюр
-                        Покрытие гель-лаком
-                        Педикюр
-                        Стерильно (кварцевая лампа, сухожар, одноразовые расходники)
-                        Предварительная запись</v-list-text>
+                      <v-list-text class="opis_visitka">✅Базовые курсы, повышение квалификации.
+                        ✅Маникюр
+                        ✅Покрытие гель-лаком
+                        ✅Педикюр
+                        ✅Стерильно (кварцевая лампа, сухожар, одноразовые расходники)
+                        ✅Предварительная запись</v-list-text>
 
                       <v-card-text>
                         <v-icon left>
@@ -270,7 +270,8 @@
         <span class="headline">Рабочее место</span>
       </v-card-title>
       <v-card-text>
-        <v-list v-for="icon in icons_add_visitka" class="d-flex">
+        <v-btn @click='saveLink'><v-icon>mdi-lock</v-icon></v-btn>
+        <v-list v-for="(icon, index) in icons_add_visitka" class="d-flex">
           <v-btn class="btn__icon__form white--text visitka_icon" icon :style="icon.color_icon">
             <v-icon size="35px">
               {{ icon.text_icon }}
@@ -278,7 +279,7 @@
 
           </v-btn>
           <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
-            clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-lock" @click:append-outer="saveLink"
+            clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-delete" @click:append-outer="deleteIcon(index)"
             @click:clear="resetLink"></v-text-field>
         </v-list>
 

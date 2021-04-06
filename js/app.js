@@ -189,6 +189,9 @@ new Vue({
     resetLink() {
       this.readlink = false
     },
+    deleteIcon(index){
+      this.icons_add_visitka.splice(index, 1)
+    },
     add_form_icon(text_icon, color_icon, name_icon) {
       this.icons_add_visitka.push({
         text_icon: text_icon,
