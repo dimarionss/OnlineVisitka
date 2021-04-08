@@ -81,7 +81,7 @@ new Vue({
       text_icon: 'mdi-instagram',
       color_icon: 'background: #3f729b;',
       name_icon: 'Instagram',
-      link_social: 'www.instagram.com/'
+      link_social: 'https://instagram.com/'
     },],
     icon_dialog: [{
         text_icon: 'mdi-telegram',
