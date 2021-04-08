@@ -283,7 +283,7 @@
           </v-btn>
           <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
             clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-delete" @click:append-outer="deleteIcon(index)"
-            @click:clear="resetLink"></v-text-field>
+            @click:clear="resetLink" @change='addLinkIcon' v-model='linkIconForm[index]'></v-text-field>
         </v-list>
 
       </v-card-text>

@@ -64,90 +64,105 @@ new Vue({
       'mdi-telegram',
       'mdi-instagram',
     ],
+    linkIconForm:{},
     icons_add_visitka: [{
       text_icon: 'mdi-telegram',
       color_icon: 'background: #249bd7;',
-      name_icon: 'Telegram'
+      name_icon: 'Telegram',
     },
     {
       text_icon: 'mdi-facebook',
       color_icon: 'background: #3b5998;',
-      name_icon: 'Facebook'
+      name_icon: 'Facebook',
     },
     {
       text_icon: 'mdi-instagram',
       color_icon: 'background: #3f729b;',
-      name_icon: 'Instagram'
+      name_icon: 'Instagram',
     },],
     icon_dialog: [{
         text_icon: 'mdi-telegram',
         color_icon: 'background: #249bd7;',
-        name_icon: 'Telegram'
+        name_icon: 'Telegram',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-facebook',
         color_icon: 'background: #3b5998;',
-        name_icon: 'Facebook'
+        name_icon: 'Facebook',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-instagram',
         color_icon: 'background: #3f729b;',
-        name_icon: 'Instagram'
+        name_icon: 'Instagram',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-twitter',
         color_icon: 'background: #00acee;',
-        name_icon: 'Twitter'
+        name_icon: 'Twitter',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-google',
         color_icon: 'background: #DD4B39;',
-        name_icon: 'Google'
+        name_icon: 'Google',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-twitch',
         color_icon: 'background: #591381;',
-        name_icon: 'Twitch'
+        name_icon: 'Twitch',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-pinterest',
         color_icon: 'background: #c8232c;',
-        name_icon: 'Pinterest'
+        name_icon: 'Pinterest',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-whatsapp',
         color_icon: 'background: #50b154;',
-        name_icon: 'WhatsApp'
+        name_icon: 'WhatsApp',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-skype',
         color_icon: 'background: #00aff0;',
-        name_icon: 'Skype'
+        name_icon: 'Skype',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-youtube',
         color_icon: 'background: #c4302b;',
-        name_icon: 'YouTube'
+        name_icon: 'YouTube',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-vk',
         color_icon: 'background: #5d84ae;',
-        name_icon: 'Vkontakte'
+        name_icon: 'Vkontakte',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-odnoklassniki',
         color_icon: 'background: #f93;',
-        name_icon: 'Odnoklassniki'
+        name_icon: 'Odnoklassniki',
+        link_icon: ''
       },
       {
         text_icon: 'mdi-linkedin',
         color_icon: 'background: #0e76a8;',
-        name_icon: 'LinkedIn'
+        name_icon: 'LinkedIn',
+        link_icon: ''
       },
       {
         text_icon: 'fab fa-viber',
         color_icon: 'background: #665CAC;',
-        name_icon: 'Viber'
+        name_icon: 'Viber',
+        link_icon: ''
       },
     ],
 
@@ -190,6 +205,13 @@ new Vue({
     },
     deleteIcon(index){
       this.icons_add_visitka.splice(index, 1)
+    },
+    addLinkIcon(){
+      this.icons_add_visitka.forEach((item, index) => {
+        this.$set(item, 'link_icon', this.linkIconForm[index])
+        console.log(this.icons_add_visitka)
+      })
+      // this.linkIconForm = {}
     },
     add_form_icon(text_icon, color_icon, name_icon) {
       this.icons_add_visitka.push({
