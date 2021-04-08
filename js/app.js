@@ -69,100 +69,103 @@ new Vue({
       text_icon: 'mdi-telegram',
       color_icon: 'background: #249bd7;',
       name_icon: 'Telegram',
+      link_social: 'https://t.me/'
     },
     {
       text_icon: 'mdi-facebook',
       color_icon: 'background: #3b5998;',
       name_icon: 'Facebook',
+      link_social: 'https://www.facebook.com/'
     },
     {
       text_icon: 'mdi-instagram',
       color_icon: 'background: #3f729b;',
       name_icon: 'Instagram',
+      link_social: 'www.instagram.com/'
     },],
     icon_dialog: [{
         text_icon: 'mdi-telegram',
         color_icon: 'background: #249bd7;',
         name_icon: 'Telegram',
-        link_icon: ''
+        link_social: 'https://t.me/'
       },
       {
         text_icon: 'mdi-facebook',
         color_icon: 'background: #3b5998;',
         name_icon: 'Facebook',
-        link_icon: ''
+        link_social: 'https://www.facebook.com/'
       },
       {
         text_icon: 'mdi-instagram',
         color_icon: 'background: #3f729b;',
         name_icon: 'Instagram',
-        link_icon: ''
+        link_social: 'www.instagram.com/'
       },
       {
         text_icon: 'mdi-twitter',
         color_icon: 'background: #00acee;',
         name_icon: 'Twitter',
-        link_icon: ''
+        link_social: 'https://twitter.com/'
       },
       {
         text_icon: 'mdi-google',
         color_icon: 'background: #DD4B39;',
         name_icon: 'Google',
-        link_icon: ''
+        link_social: 'https://plus.google.com/'
       },
       {
         text_icon: 'mdi-twitch',
         color_icon: 'background: #591381;',
         name_icon: 'Twitch',
-        link_icon: ''
+        link_social: 'https://www.twitch.tv/'
       },
       {
         text_icon: 'mdi-pinterest',
         color_icon: 'background: #c8232c;',
         name_icon: 'Pinterest',
-        link_icon: ''
+        link_social: 'https://www.pinterest.ru/'
       },
       {
         text_icon: 'mdi-whatsapp',
         color_icon: 'background: #50b154;',
         name_icon: 'WhatsApp',
-        link_icon: ''
+        link_social: 'https://wa.me/'
       },
       {
         text_icon: 'mdi-skype',
         color_icon: 'background: #00aff0;',
         name_icon: 'Skype',
-        link_icon: ''
+        link_social: 'skype:'
       },
       {
         text_icon: 'mdi-youtube',
         color_icon: 'background: #c4302b;',
         name_icon: 'YouTube',
-        link_icon: ''
+        link_social: ''
       },
       {
         text_icon: 'mdi-vk',
         color_icon: 'background: #5d84ae;',
         name_icon: 'Vkontakte',
-        link_icon: ''
+        link_social: 'https://vk.com/'
       },
       {
         text_icon: 'mdi-odnoklassniki',
         color_icon: 'background: #f93;',
         name_icon: 'Odnoklassniki',
-        link_icon: ''
+        link_social: 'https://ok.ru/profile/'
       },
       {
         text_icon: 'mdi-linkedin',
         color_icon: 'background: #0e76a8;',
         name_icon: 'LinkedIn',
-        link_icon: ''
+        link_social: 'https://www.linkedin.com/in/'
       },
       {
         text_icon: 'fab fa-viber',
         color_icon: 'background: #665CAC;',
         name_icon: 'Viber',
-        link_icon: ''
+        link_social: 'https://www.viber.com/'
       },
     ],
 
@@ -213,8 +216,8 @@ new Vue({
       })
       // this.linkIconForm = {}
     },
-    linkLocation(iconLink){
-      window.location = iconLink;
+    linkLocation(iconLink, linkSocial){
+      window.location = linkSocial+iconLink;
     },
     add_form_icon(text_icon, color_icon, name_icon) {
       this.icons_add_visitka.push({
