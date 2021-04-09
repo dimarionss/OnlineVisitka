@@ -82,7 +82,7 @@ new Vue({
       color_icon: 'background: #3f729b;',
       name_icon: 'Instagram',
       link_social: 'https://instagram.com/'
-    },],
+    }],
     icon_dialog: [{
         text_icon: 'mdi-telegram',
         color_icon: 'background: #249bd7;',
@@ -99,7 +99,7 @@ new Vue({
         text_icon: 'mdi-instagram',
         color_icon: 'background: #3f729b;',
         name_icon: 'Instagram',
-        link_social: 'www.instagram.com/'
+        link_social: 'https://instagram.com/'
       },
       {
         text_icon: 'mdi-twitter',
@@ -129,7 +129,7 @@ new Vue({
         text_icon: 'mdi-whatsapp',
         color_icon: 'background: #50b154;',
         name_icon: 'WhatsApp',
-        link_social: 'https://wa.me/'
+        link_social: 'https://api.whatsapp.com/send?phone='
       },
       {
         text_icon: 'mdi-skype',
@@ -216,14 +216,15 @@ new Vue({
       })
       // this.linkIconForm = {}
     },
-    linkLocation(iconLink, linkSocial){
+    linkLocation(linkSocial, iconLink){
       window.location = linkSocial+iconLink;
     },
-    add_form_icon(text_icon, color_icon, name_icon) {
+    add_form_icon(text_icon, color_icon, name_icon, link_social) {
       this.icons_add_visitka.push({
         text_icon: text_icon,
         color_icon: color_icon,
-        name_icon: name_icon
+        name_icon: name_icon,
+        link_social: link_social
       })
       this.dialog = false
     },

@@ -184,7 +184,7 @@
 
                     <v-card-text class="icon__dialog__block">
                       <div v-for="icon in icons_add_visitka" :class="show ? 'opacity_icon' : ''">
-                        <v-btn class="btn__icon visitka_icon"  :disabled="show ? true : false" text icon :style="icon.color_icon" @click='linkLocation(icon.link_icon, icon.link_social)'>
+                        <v-btn class="btn__icon visitka_icon"  :disabled="show ? true : false" text icon :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
                           <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                         </v-btn>
                         <p class="text__icon__block">{{icon.name_icon}}</p>
@@ -243,7 +243,7 @@
                           <v-card-text class="icon__dialog__block">
                             <div v-for="icon in icon_dialog">
                               <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon"
-                                @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon)'>
+                                @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon, icon.link_social)'>
                                 <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                               </v-btn>
                               <p class="text__icon__block">{{icon.name_icon}}</p>
