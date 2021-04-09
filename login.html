@@ -280,7 +280,7 @@
         <v-btn @click='readlink = !readlink' class="btn__lock">
           <v-icon>{{ linkIcon }}</v-icon>
         </v-btn>
-        <v-list v-for="(icon, index) in icons_add_visitka" :key="icon" class="d-flex" >
+        <v-list v-for="(icon, index) in icons_add_visitka" :key="index" class="d-flex" >
           <v-btn class="btn__icon__form white--text visitka_icon" icon :style="icon.color_icon">
             <v-icon size="35px">
               {{ icon.text_icon }}
