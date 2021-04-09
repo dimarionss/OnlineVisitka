@@ -165,7 +165,7 @@ new Vue({
         text_icon: 'fab fa-viber',
         color_icon: 'background: #665CAC;',
         name_icon: 'Viber',
-        link_social: 'https://www.viber.com/'
+        link_social: 'https://viber.com/send?phone='
       },
     ],
 
