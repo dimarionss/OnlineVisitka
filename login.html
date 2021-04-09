@@ -82,12 +82,12 @@
                         Алёна Пашкова
                       </div>
                       <v-card-text>Студия art_pashkova</v-card-text>
-                      <v-list-text class="opis_visitka">✅Окрашивание 
-                        ✅Стрижки 
+                      <v-list-text class="opis_visitka">✅Окрашивание
+                        ✅Стрижки
                         ✅Наращивание волос
-                        ✅Коррекция бровей 
+                        ✅Коррекция бровей
                         ✅Татуаж
-                        ✅Обучение. 
+                        ✅Обучение.
                         ✅Химия парикмахера</v-list-text>
 
                       <v-card-text>
@@ -154,6 +154,11 @@
                                 </v-text-field>
                               </v-col>
                               <v-col cols="12">
+                                <v-textarea outlined name="input-7-4" label="Информация о себе"
+                                  value="">
+                                </v-textarea>
+                              </v-col>
+                              <v-col cols="12">
                                 <v-text-field label="Email" required></v-text-field>
                               </v-col>
                               <v-col cols="12">
@@ -163,7 +168,7 @@
                                 <v-text-field label="Номер телефона" type="tel" required></v-text-field>
                               </v-col>
                               <v-col cols="12">
-                                <v-text-field label="Адрес" type="text" required></v-text-field>
+                                <v-text-field label="Адрес" type="text"></v-text-field>
                               </v-col>
                             </v-row>
                           </v-container>
@@ -184,7 +189,8 @@
 
                     <v-card-text class="icon__dialog__block">
                       <div v-for="icon in icons_add_visitka" :class="show ? 'opacity_icon' : ''">
-                        <v-btn class="btn__icon visitka_icon"  :disabled="show ? true : false" text icon :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
+                        <v-btn class="btn__icon visitka_icon" :disabled="show ? true : false" text icon
+                          :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
                           <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                         </v-btn>
                         <p class="text__icon__block">{{icon.name_icon}}</p>
