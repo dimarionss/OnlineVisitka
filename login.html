@@ -154,8 +154,7 @@
                                 </v-text-field>
                               </v-col>
                               <v-col cols="12">
-                                <v-textarea outlined name="input-7-4" label="Информация о себе"
-                                  value="">
+                                <v-textarea outlined name="input-7-4" label="Информация о себе" value="">
                                 </v-textarea>
                               </v-col>
                               <v-col cols="12">
@@ -246,10 +245,23 @@
                         <v-card>
                           <v-card-title>Выберите ссылку на социальную сеть</v-card-title>
                           <v-divider></v-divider>
+                          <v-card-title>Социальные сети</v-card-title>
                           <v-card-text class="icon__dialog__block">
                             <div v-for="icon in icon_dialog">
                               <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon"
-                                @click='add_form_icon(icon.text_icon, icon.color_icon, icon.name_icon, icon.link_social)'>
+                                @click='add_form_icon(icon.text_icon, icon.icon_img_link, icon.color_icon, icon.name_icon, icon.link_social, icon.link_description)'>
+                                <!-- <img :src="icon.icon_img_link" :alt="icon.name_icon"> -->
+                                <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                              </v-btn>
+                              <p class="text__icon__block">{{icon.name_icon}}</p>
+                            </div>
+                          </v-card-text>
+                          <v-card-title>Контаные данные</v-card-title>
+                          <v-card-text class="icon__dialog__block">
+                            <div v-for="icon in icon_call_dialog">
+                              <v-btn class="btn__icon visitka_icon" text icon :style="icon.color_icon"
+                                @click='add_form_icon(icon.text_icon, icon.icon_img_link, icon.color_icon, icon.name_icon, icon.link_social, icon.link_description)'>
+                                <!-- <img :src="icon.icon_img_link" :alt="icon.name_icon"> -->
                                 <v-icon size="60px">{{ icon.text_icon }}</v-icon>
                               </v-btn>
                               <p class="text__icon__block">{{icon.name_icon}}</p>
@@ -271,7 +283,7 @@
 
 
   <!-- РАБОЧЕЕ МЕСТО -->
-  <v-col cols="12" sm="4" >
+  <v-col cols="12" sm="4">
     <v-sheet rounded="lg" min-height="350" style="margin-bottom: 50px;" v-if='icons_add_visitka.length !== 0'>
       <v-card-title>
         <span class="headline">Рабочее место</span>
@@ -280,14 +292,14 @@
         <v-btn @click='readlink = !readlink' class="btn__lock">
           <v-icon>{{ linkIcon }}</v-icon>
         </v-btn>
-        <v-list v-for="(icon, index) in icons_add_visitka" v-bind:key="icon.name_icon" class="d-flex" >
+        <v-list v-for="(icon, index) in icons_add_visitka" v-bind:key="icon.name_icon" class="d-flex">
           <v-btn class="btn__icon__form white--text visitka_icon" icon :style="icon.color_icon">
             <v-icon size="35px">
               {{ icon.text_icon }}
             </v-icon>
 
           </v-btn>
-          <v-text-field label="Ник\логин" value='saassas' outlined :readonly='readlink' clearable
+          <v-text-field :label="icon.link_description" value='saassas' outlined :readonly='readlink' clearable
             clear-icon="mdi-close-circle-outline" append-outer-icon="mdi-delete" @click:append-outer="deleteIcon(index)"
             @click:clear="resetLink" @change='addLinkIcon' v-model='linkIconForm[index]'></v-text-field>
         </v-list>
