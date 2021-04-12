@@ -195,6 +195,9 @@ new Vue({
       window.location.href = 'login.html'
       this.$refs.form.validate()
     },
+    location(){
+      window.location.href = 'index.html'
+    },
     reset() {
       this.$refs.form.reset()
     },

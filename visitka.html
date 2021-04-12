@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/style.css">
+  <title>OnlineVisitka</title>
+</head>
+
+<body>
+  <div id="app">
+    <template>
+      <v-app id="inspire">
+        <v-app-bar app color="black darken-1" flat style='z-index: 10;'><a href="index.html"
+            class="logo__link__mainmenu">
+            <v-avatar color="shrink" size="50" width='100'>
+              <v-img src="img/logo_notbg.PNG"></v-img>
+            </v-avatar>
+          </a>
+
+        </v-app-bar>
+
+        <v-main class="grey lighten-3">
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="12">
+
+
+                <!-- Визитка -->
+
+                <v-list style="border-radius:10px; position: relative;" max-width="375" class="mx-auto main__img">
+                  <v-img src="img/fon.jpg" height='180px'
+                    style="margin-top: -8px; border-top-right-radius:10px; border-top-left-radius:10px;"></v-img>
+                  <v-row class="fill-height">
+
+                    <v-avatar class="avatar__visitka" class="profile" size="150">
+                      <v-img src="img/woomen.jpg"></v-img>
+                    </v-avatar>
+
+
+                  </v-row>
+
+                  <v-list two-line class="content__visitka" style="text-align: center;">
+                    <v-card-title class="black--text mt-15 flex-column">
+
+                      <div class="display-1">
+                        Алёна Пашкова
+                      </div>
+                      <v-card-text>Студия art_pashkova</v-card-text>
+                      <v-list-text class="opis_visitka">✅Окрашивание
+                        ✅Стрижки
+                        ✅Наращивание волос
+                        ✅Коррекция бровей
+                        ✅Татуаж
+                        ✅Обучение.
+                        ✅Химия парикмахера</v-list-text>
+
+                      <v-card-text>
+                        <v-icon left>
+                          mdi-map
+                        </v-icon>вулиця Калинова, 53, Дніпро, Дніпропетровська область
+                      </v-card-text>
+                    </v-card-title>
+
+
+                    <v-card-text class="icon__dialog__block">
+                      <div v-for="icon in icons_add_visitka" :class="show ? 'opacity_icon' : ''">
+                        <v-btn class="btn__icon visitka_icon" :disabled="show ? true : false" text icon
+                          :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
+                          <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                        </v-btn>
+                        <p class="text__icon__block">{{icon.name_icon}}</p>
+                      </div>
+                      <v-btn class="black__btn mt-5 mb-3 btn_main" rounded
+                      @click="location"><v-icon left>mdi-account-multiple-plus-outline</v-icon> Создать свою визитку</v-btn>
+                      
+                    </v-card-text>
+                    <v-img src="img/logo_white.PNG" class="logo__img" style="width: 80px; height:80px ; margin: 0 auto;"></v-img>
+              </v-col>
+              <!-- Визитка -->
+
+
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-app>
+    </template>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/JQuery.min.js"></script>
+  <script src="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/index.umd.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+
+</html>
