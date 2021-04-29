@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div id="app">
+  <div id="menu">
     <template>
       <v-app id="inspire">
         <v-app-bar app color="black darken-1" flat style='z-index: 10;'>
@@ -138,7 +138,6 @@
                                 <v-file-input prepend-icon="mdi-camera" class="my-4" v-model="selectedFileava"
                                   accept="image/png, image/jpeg" placeholder="Выберите фото профиля" :show-size="1024"
                                   @change="setupCropperava" label="Аватар">
-
                                 </v-file-input>
                               </v-col>
                               <v-col cols="12" sm="6" md="4">
@@ -187,12 +186,14 @@
 
 
                     <v-card-text class="icon__dialog__block">
-                      <div v-for="icon in icons_add_visitka" :class="show ? 'opacity_icon' : ''">
-                        <v-btn class="btn__icon visitka_icon" :disabled="show ? true : false" text icon
-                          :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
-                          <v-icon size="60px">{{ icon.text_icon }}</v-icon>
-                        </v-btn>
-                        <p class="text__icon__block">{{icon.name_icon}}</p>
+                      <div v-for="(icon, index) in icons_add_visitka" :class="show ? 'opacity_icon' : ''"  class="drop_list">
+                        <div :id="'c' + index" class='drop'>
+                          <v-btn class="btn__icon visitka_icon" :disabled="show ? true : false" text icon
+                            :style="icon.color_icon" @click='linkLocation(icon.link_social, icon.link_icon)'>
+                            <v-icon size="60px">{{ icon.text_icon }}</v-icon>
+                          </v-btn>
+                          <p class="text__icon__block">{{icon.name_icon}}</p>
+                        </div>
                       </div>
                       <!-- <v-list-item>
                           <v-list-item-icon>
@@ -360,6 +361,7 @@
   <script src="js/JQuery.min.js"></script>
   <script src="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/index.umd.js"></script>
   <script src="js/custom.js"></script>
+  <script src="js/swap.js"></script>
 </body>
 
 </html>

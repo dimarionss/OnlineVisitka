@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/style.css">
+  <title>OnlineVisitka</title>
+</head>
+
+<body>
+  <div id="menu">
+    <template>
+      <v-app id="inspire">
+        <v-app-bar app color="black darken-1" flat style='z-index: 10;'>
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer" color="white"></v-app-bar-nav-icon>
+          <v-avatar color="shrink" size="50" class="logo__img__mainmenu" width='100'>
+            <v-img src="/views/_source/img/logo_notbg.PNG"></v-img>
+          </v-avatar>
+
+        </v-app-bar>
+
+        <v-main class="grey lighten-3">
+          <v-container>
+            <v-row>
+              <v-col cols="12" sm="12">
+                <v-navigation-drawer v-model="drawer" fixed temporary style='top: 56px;'>
+                  <v-list>
+                    <v-list-item link>
+                      <v-list-item-content>
+                        <v-list-item-title class="title">
+                          {{user.name}} {{user.surname}}
+                        </v-list-item-title>
+                        <v-list-item-subtitle>{{user.email}}</v-list-item-subtitle>
+                      </v-list-item-content>
+
+                      <v-list-item-action>
+                        <v-icon>mdi-menu-down</v-icon>
+                      </v-list-item-action>
+                    </v-list-item>
+                  </v-list>
+                  <v-divider></v-divider>
+                  <v-list nav dense>
+                    <v-list-item :key="i" @click="copyBtn">
+                      <v-text-field label="Ваша ссылка" outlined rounded dense readonly
+                        v-model="protocol+'://'+domain+'/'+user.id" id="copytext" class="link__side__menu">
+                      </v-text-field>
+                    </v-list-item>
+                    <v-list-item-group v-model="selectedItem" color="black">
+                      <div v-for="(item, i) in items">
+                        <div v-if='item.type === "link"'>
+                          <v-list-item :key="i" @click="reLocate(item.link)">
+
+                            <v-list-item-icon>
+                              <v-icon v-text="item.icon"></v-icon>
+                            </v-list-item-icon>
+
+                            <v-list-item-content>
+                              <v-list-item-title v-text="item.text"></v-list-item-title>
+                            </v-list-item-content>
+                          </v-list-item>
+                        </div>
+                        <div v-if='item.type === "btn"'>
+                          <v-list-item :key="i" @click.once="makeCodeSide" @click="toggleqrside = !toggleqrside">
+
+                            <v-list-item-icon>
+                              <v-icon v-text="item.icon"></v-icon>
+                            </v-list-item-icon>
+
+                            <v-list-item-content>
+                              <v-list-item-title v-text="item.text"></v-list-item-title>
+                            </v-list-item-content>
+                          </v-list-item>
+                          <div id="qrcode_side" style="padding: 5px" v-show='toggleqrside'></div>
+                        </div>
+                      </div>
+                    </v-list-item-group>
+                  </v-list>
+                </v-navigation-drawer>
+
+
+
+
+
+
+
+                <!-- menu -->
+                <v-main class="grey lighten-3">
+                  <v-sheet min-height="70vh" rounded="lg"
+                    style="display: flex; align-items: center; flex-direction: column; padding: 15px;">
+
+                    <v-list v-if='menu_categorys.length !== 0' style="width: 100%;" v-for="(cat, i) in menu_categorys">
+                      <template>
+                        <v-list-group v-if='menu_categorys.category_cook !== cat.category_cook'>
+                          <template v-slot:activator>
+
+                            <v-list-item-title>{{cat.category_cook}}</v-list-item-title>
+
+                          </template>
+                          <v-list-item :key="item.name_cook" v-for="(item, index) in menu_add_item"
+                            v-if='cat.category_cook === item.category_cook'>
+                            <v-img :src="item.img_cook" style="max-width: 150px; height:auto; margin: 5px 10px;">
+                            </v-img>
+                            <v-list-item-content>
+
+                              <v-list-item-title>
+                                {{item.name_cook}}..........................................{{item.cost_cook}} /
+                                {{item.weight_cook}}</v-list-item-title>
+                              <v-list-item-subtitle v-html="item.description_cook" style="white-space: normal;">
+                              </v-list-item-subtitle>
+
+                            </v-list-item-content>
+                            <v-icon @click='removeMenu(index)'>mdi-delete</v-icon>
+                          </v-list-item>
+                          <v-divider></v-divider>
+                      </template>
+                    </v-list>
+                    </v-list-group>
+
+
+
+                    <!-- modal registracion -->
+                    <v-dialog v-model="add_menu" persistent max-width="600px">
+                      <template v-slot:activator="{ on: onEdit, attrs: editModal }">
+                        <v-col cols="12" sm="12" style="text-align: center;">
+                          <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editModal" v-on="onEdit">
+                            <v-icon left>
+                              mdi-plus-box
+                            </v-icon>Создать меню
+                          </v-btn>
+                        </v-col>
+                      </template>
+                      <v-card>
+                        <v-card-title>
+                          <span class="headline">Профиль</span>
+                        </v-card-title>
+
+                        <v-card-text>
+                          <v-container>
+                            <v-row>
+                              <v-col cols="12">
+                                <v-text-field label="Название блюда" required v-model="name_cook"></v-text-field>
+                              </v-col>
+                              <v-col cols="12">
+                                <cropper ref="source" :src="objectUrlmenu" :stencil-props="{ aspectRatio: 16/9 }"
+                                  @change="changes">
+                                </cropper>
+
+                                <v-file-input label="Фото блюда" class="my-4" prepend-icon="mdi-camera"
+                                  accept="image/png, image/jpeg" placeholder="Выберите фото блюда" :show-size="1024"
+                                  @change="setupCropperMenu" v-model="img_cook">
+                                </v-file-input>
+
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Категория блюда" required v-model="category_cook"></v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Вес блюда" v-model="weight_cook">
+                                </v-text-field>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="4">
+                                <v-text-field label="Цена" required v-model="cost_cook">
+                                </v-text-field>
+                              </v-col>
+
+                              <v-col cols="12">
+                                <v-textarea outlined name="input-7-4" label="Описания блюда" value=""
+                                  v-model="description_cook">
+                                </v-textarea>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-file-input truncate-length="15" label="Добавить меню в PDF формате"
+                                  hint="Если меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
+                                  persistent-hint v-model="file_cook"></v-file-input>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-card-text>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn color="black darken-1" text @click="add_menu = false">
+                            Закрыть
+                          </v-btn>
+                          <v-btn color="black darken-1" text @click="add_menu = false, add_menu_array()">
+                            Сохранить меню
+                          </v-btn>
+                        </v-card-actions>
+                      </v-card>
+                    </v-dialog>
+                    <!-- modal registracion end-->
+                  </v-sheet>
+                </v-main>
+              </v-col>
+              <!-- menu -->
+
+
+
+
+              <!-- Подвал -->
+              <v-footer fixed hide-on-scroll horizontal style="bottom: 55px;" class='link__bottom' v-show='toggle'>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-btn text v-bind="attrs" v-on="on" @click="copyBtn">
+                      <v-icon color='black'>mdi-file-document-box-multiple-outline</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Скопировать ссылку</span>
+                </v-tooltip>
+                <v-text-field label="Ваша ссылка" solo rounded dense readonly
+                  v-model="protocol+'://'+domain+'/'+user.id" id="copytext_2">
+                </v-text-field>
+              </v-footer>
+              <v-footer fixed hide-on-scroll horizontal
+                style="bottom: 55px;align-items: center;justify-content: center; flex-direction: column;"
+                class='link__bottom' v-show='toggle_qr'>
+                <v-btn text @click.once="makeCode" v-once>
+                  <v-icon color='black'>mdi-qrcode</v-icon>
+                  Сгенерировать Qr-Code
+                </v-btn>
+                <div id="qrcode" style="padding: 5px"></div>
+              </v-footer>
+              <v-bottom-navigation fixed hide-on-scroll horizontal scroll-target="#hide-on-scroll-example">
+                <v-btn color="deep-purple accent-4" text @click="toggle = !toggle">
+                  <span>Поделиться</span>
+                  <v-icon>mdi-share-variant</v-icon>
+                </v-btn>
+                <v-btn color="deep-purple accent-4" text text @click="toggle_qr = !toggle_qr">
+                  <span>QR Код</span>
+                  <v-icon>mdi-qrcode</v-icon>
+                </v-btn>
+              </v-bottom-navigation>
+
+
+              <!-- Подвал -->
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-app>
+    </template>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/JQuery.min.js"></script>
+  <script src="https://unpkg.com/vue-advanced-cropper@^1.0.0/dist/index.umd.js"></script>
+  <script src="js/custom.js"></script>
+  <script src="js/swap.js"></script>
+</body>
+
+</html>
