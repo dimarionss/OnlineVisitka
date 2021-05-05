@@ -101,6 +101,7 @@ menu = new Vue({
 
     // menu add==================================================
     add_menu: false,
+    edit_menu: false,
     menu_categorys: [{}],
     menu_add_item: [{
         name_cook: 'Биг тейсти',

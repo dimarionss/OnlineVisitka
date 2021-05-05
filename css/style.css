@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /*Обнуление*/
 * {
   padding: 0;
@@ -120,7 +121,7 @@ h6 {
 
 .visitka__img {
   -webkit-border-radius: 50%;
-          border-radius: 50%;
+  border-radius: 50%;
   text-align: center;
 }
 
@@ -156,9 +157,9 @@ h6 {
   margin: 10px;
   background-color: black;
   -webkit-border-radius: 15px;
-          border-radius: 15px;
+  border-radius: 15px;
   -webkit-box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-          box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
   color: white !important;
 }
 
@@ -178,17 +179,17 @@ h6 {
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   padding: 5px !important;
   -webkit-box-align: baseline;
   -webkit-align-items: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
+  -ms-flex-align: baseline;
+  align-items: baseline;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .icon__dialog__block .text__icon__block {
@@ -209,16 +210,16 @@ h6 {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .work__place .btn__lock {
@@ -274,27 +275,41 @@ img {
   margin: 0 auto;
 }
 
+.v-list-item__content {
+  width: 100%;
+}
+
+.v-list-item__title {
+  white-space: normal
+}
+
+.button__menu__main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
 /*=================================main styles end====================================*/
 /*=================================Login====================================*/
 .main__login__block {
   -webkit-box-align: center;
   -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .main__login__block .login__block {
   padding: 10px;
   text-align: center;
   -webkit-box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
-          box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
+  box-shadow: 0 10px 10px 0px rgba(0, 0, 0, 0.199) !important;
 }
 
 .main__login__block .login__row {
   -webkit-box-pack: center;
   -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .main__login__block .icon__bar__login {
@@ -314,8 +329,15 @@ img {
 .btn_main {
   font-weight: 900;
   -webkit-box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
-          box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
+  box-shadow: 6px 10px 25px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 }
 
 /*=================================media ====================================*/
+
+@media (max-width: 600px) {
+  .list__item__menu {
+    flex-direction: column;
+  }
+}
+
 /*=================================media ====================================*/
