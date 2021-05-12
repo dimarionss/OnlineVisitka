@@ -131,7 +131,11 @@ menu = new Vue({
         file_cook: '',
       }
     ],
-
+    description_check: false,
+    category_check: false,
+    weight_check: false,
+    file_check: false,
+    button_check: false,
 
 
     // menu add==================================================

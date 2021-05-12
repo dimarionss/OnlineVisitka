@@ -328,6 +328,19 @@ img {
 .menu__container .v-list-item--link{
   background-color: black;
 }
+.menu__container .theme--light.v-icon{
+  color: #fff;
+}
+.button__cook{
+  background-color: rgb(231, 231, 231);
+  width: 100%;
+  border-radius: 20px;
+  padding: 15px 5px 0 5px;
+  margin-bottom: 5px;
+}
+.button__cook h4 {
+  text-align: center;
+}
 /*=================================main styles end====================================*/
 /*=================================Login====================================*/
 .main__login__block {

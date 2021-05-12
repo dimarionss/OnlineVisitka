@@ -94,7 +94,8 @@
                   <v-sheet min-height="70vh" rounded="lg"
                     style="display: flex; align-items: center; flex-direction: column;">
 
-                    <v-list v-if='menu_categorys.length !== 0' style="width: 100%;" v-for="(cat, i) in menu_categorys" class="menu__container">
+                    <v-list v-if='menu_categorys.length !== 0' style="width: 100%;" v-for="(cat, i) in menu_categorys"
+                      class="menu__container">
                       <template>
                         <v-list-group v-if='menu_categorys.category_cook !== cat.category_cook'>
                           <template v-slot:activator>
@@ -121,10 +122,10 @@
                                 <!-- modal edit menu -->
                                 <v-dialog v-model="edit_menu" persistent max-width="600px">
                                   <template v-slot:activator="{ on: onEdtiMenu, attrs: editMenu }">
-                                      <v-btn elevation="2" raised class="gray__btn btn_main" v-bind="editMenu"
-                                        v-on="onEdtiMenu">
-                                        <v-icon left>mdi-pen</v-icon>Редактировать меню
-                                      </v-btn>
+                                    <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editMenu"
+                                      v-on="onEdtiMenu">
+                                      <v-icon left>mdi-pen</v-icon>Редактировать меню
+                                    </v-btn>
                                   </template>
                                   <v-card>
                                     <v-card-title>
@@ -135,7 +136,7 @@
                                       <v-container>
                                         <v-row>
                                           <v-col cols="12">
-                                            <v-text-field label="Название блюда" required v-model="name_cook">
+                                            <v-text-field label="Название" required v-model="name_cook">
                                             </v-text-field>
                                           </v-col>
                                           <v-col cols="12">
@@ -143,33 +144,33 @@
                                               :stencil-props="{ aspectRatio: 16/9 }" @change="changes">
                                             </cropper>
 
-                                            <v-file-input label="Фото блюда" class="my-4" prepend-icon="mdi-camera"
+                                            <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
                                               accept="image/png, image/jpeg" placeholder="Выберите фото блюда"
                                               :show-size="1024" @change="setupCropperMenu" v-model="img_cook">
                                             </v-file-input>
 
                                           </v-col>
-                                          <v-col cols="12" sm="6" md="4">
-                                            <v-text-field label="Категория блюда" required v-model="category_cook">
-                                            </v-text-field>
-                                          </v-col>
-                                          <v-col cols="12" sm="6" md="4">
-                                            <v-text-field label="Вес блюда" v-model="weight_cook">
-                                            </v-text-field>
-                                          </v-col>
-                                          <v-col cols="12" sm="6" md="4">
+                                          <v-col cols="12">
                                             <v-text-field label="Цена" required v-model="cost_cook">
+                                            </v-text-field>
+                                          </v-col>
+                                          <v-col cols="12" sm="6" md="6">
+                                            <v-text-field label="Категория" required v-model="category_cook">
+                                            </v-text-field>
+                                          </v-col>
+                                          <v-col cols="12" sm="6" md="6">
+                                            <v-text-field label="Вес" v-model="weight_cook">
                                             </v-text-field>
                                           </v-col>
 
                                           <v-col cols="12">
-                                            <v-textarea outlined name="input-7-4" label="Описания блюда" value=""
+                                            <v-textarea outlined name="input-7-4" label="Описания" value=""
                                               v-model="description_cook">
                                             </v-textarea>
                                           </v-col>
                                           <v-col cols="12">
-                                            <v-file-input truncate-length="15" label="Добавить меню в PDF формате"
-                                              hint="Если меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
+                                            <v-file-input truncate-length="15" label="Добавить файл в PDF формате"
+                                              hint="Если каталок или меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
                                               persistent-hint v-model="file_cook"></v-file-input>
                                           </v-col>
                                         </v-row>
@@ -187,9 +188,9 @@
                                   </v-card>
                                 </v-dialog>
                                 <!-- modal edit menu end-->
-                                  <v-btn elevation="2" raised class="black__btn btn_main" @click='removeMenu(index)'>
-                                    <v-icon>mdi-delete</v-icon>
-                                  </v-btn>
+                                <v-btn elevation="2" raised class="black__btn btn_main" @click='removeMenu(index)'>
+                                  <v-icon>mdi-delete</v-icon>
+                                </v-btn>
                               </div>
                             </v-list-item-content>
 
@@ -208,54 +209,84 @@
                           <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editModal" v-on="onEdit">
                             <v-icon left>
                               mdi-plus-box
-                            </v-icon>Создать меню
+                            </v-icon>Создать каталог / меню
                           </v-btn>
                         </v-col>
                       </template>
                       <v-card>
                         <v-card-title>
-                          <span class="headline">Добавить меню</span>
+                          <span class="headline">Добавить</span>
                         </v-card-title>
 
                         <v-card-text>
                           <v-container>
                             <v-row>
                               <v-col cols="12">
-                                <v-text-field label="Название блюда" required v-model="name_cook"></v-text-field>
+                                <v-text-field label="Название" required v-model="name_cook"></v-text-field>
                               </v-col>
                               <v-col cols="12">
                                 <cropper ref="source" :src="objectUrlmenu" :stencil-props="{ aspectRatio: 16/9 }"
                                   @change="changes">
                                 </cropper>
-
-                                <v-file-input label="Фото блюда" class="my-4" prepend-icon="mdi-camera"
-                                  accept="image/png, image/jpeg" placeholder="Выберите фото блюда" :show-size="1024"
+                                <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
+                                  accept="image/png, image/jpeg" placeholder="Выберите изображение" :show-size="1024"
                                   @change="setupCropperMenu" v-model="img_cook">
                                 </v-file-input>
-
                               </v-col>
-                              <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Категория блюда" required v-model="category_cook"></v-text-field>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Вес блюда" v-model="weight_cook">
-                                </v-text-field>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="4">
-                                <v-text-field label="Цена" required v-model="cost_cook">
-                                </v-text-field>
-                              </v-col>
-
                               <v-col cols="12">
-                                <v-textarea outlined name="input-7-4" label="Описания блюда" value=""
+                                <v-text-field  label="Цена" required v-model="cost_cook">
+                                </v-text-field>
+                              </v-col>
+
+
+
+
+                              <v-col cols="12" v-if='category_check == true'>
+                                <v-text-field outlined  label="Категория" required v-model="category_cook"></v-text-field>
+                              </v-col>
+                              <v-col cols="12" v-if='weight_check == true'>
+                                <v-text-field outlined  label="Вес" v-model="weight_cook"></v-text-field>
+                              </v-col>
+                              <v-col cols="12" v-if='description_check == true'>
+                                <v-textarea outlined name="input-7-4" label="Описания" value=""
                                   v-model="description_cook">
                                 </v-textarea>
                               </v-col>
-                              <v-col cols="12">
-                                <v-file-input truncate-length="15" label="Добавить меню в PDF формате"
-                                  hint="Если меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
+                              <v-col cols="12" v-if='file_check == true'>
+                                <v-file-input truncate-length="15" label="Добавить файл в PDF формате"
+                                  hint="Если каталог или меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
                                   persistent-hint v-model="file_cook"></v-file-input>
                               </v-col>
+
+                              <div v-if='button_check == true' class="button__cook">
+                                <h4 class="headline">Кнопка обратной связи</h4>
+                                <v-col cols="12">
+                                  <v-text-field outlined label="Название кнопки" v-model="name_button_cook"></v-text-field>
+                                </v-col>
+                                <v-col cols="12">
+                                  <v-text-field outlined label="Почта на которую должны приходить заявки (увидомления)" v-model="mail_admin_cook"></v-text-field>
+                                </v-col>
+                              </div>
+
+
+                              <h4 class="headline">Добавить дополнительные поля</h4>
+                              <v-col cols="12" sm="6" md="6">
+                                <v-checkbox v-model="description_check" label="Описание" value=""></v-checkbox>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="6">
+                                <v-checkbox v-model="category_check" label="Категория" value=""></v-checkbox>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="6">
+                                <v-checkbox v-model="weight_check" label="Вес" value=""></v-checkbox>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="6">
+                                <v-checkbox v-model="file_check" label="Загрузить свой файл каталога или меню (PDF)"
+                                  value=""></v-checkbox>
+                              </v-col>
+                              <v-col cols="12" sm="6" md="12">
+                                <v-checkbox v-model="button_check" label="Кнопка обратной связи" value=""></v-checkbox>
+                              </v-col>
+
                             </v-row>
                           </v-container>
                         </v-card-text>
