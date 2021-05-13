@@ -74,6 +74,7 @@ menu = new Vue({
     readlink: false,
     toggle: false,
     toggle_qr: false,
+    toggle_cart: false,
     toggleqrside: false,
     dialogm1: '',
     // link social==============================
@@ -91,6 +92,14 @@ menu = new Vue({
     previewCroppedmenu: null,
 
     selectedFilemenu: null,
+
+    croppercategory: null,
+
+    objectUrlcategory: null,
+
+    previewCroppedcategory: null,
+
+    selectedFilecategory: null,
     // =======================cropp========================
 
     loader: null,
@@ -103,29 +112,33 @@ menu = new Vue({
     add_menu: false,
     edit_menu: false,
     menu_categorys: [{}],
+    // cart: [],
     menu_add_item: [{
+        id: 1,
         name_cook: 'Биг тейсти',
         img_cook: '../img/burger.jpg',
         category_cook: 'основное блюдо',
-        cost_cook: '400$',
+        cost_cook: '400',
         weight_cook: '250гр / 220 гр',
         description_cook: 'Домашний бургер никогда не сравнится с покупным из ближайшей фастфудной забегаловки! Что является гарантией успеха в приготовлении домашнего бургера? Во-первых, булочки, выпеченные самостоятельно (не покупные!), сочная котлета, соусы, овощи и....непременно веселая компания! Приготовить такой бургер я очень советую на природе - на решетке зажарить котлету и собрать сам бургер прямо на месте! На свежем воздухе в компании любимых друзей такой бургер станет еще вкуснее! Ну а как испечь настоящие булочки для бургера, как сделать фарш для сочнейшей котлеты и как собрать сам бургер я сейчас вас научу.',
         file_cook: '',
       },
       {
+        id: 2,
         name_cook: 'Биг тейсти 3',
         img_cook: '../img/sendwitch.jpg',
         category_cook: 'основное блюдо',
-        cost_cook: '400$',
+        cost_cook: '400',
         weight_cook: '150гр / 160гр / 250гр',
         description_cook: 'Домашний бургер никогда не сравнится с покупным из ближайшей фастфудной забегаловки! Что является гарантией успеха в приготовлении домашнего бургера? Во-первых, булочки, выпеченные самостоятельно (не покупные!), сочная котлета, соусы, овощи и....непременно веселая компания! Приготовить такой бургер я очень советую на природе - на решетке зажарить котлету и собрать сам бургер прямо на месте! На свежем воздухе в компании любимых друзей такой бургер станет еще вкуснее! Ну а как испечь настоящие булочки для бургера, как сделать фарш для сочнейшей котлеты и как собрать сам бургер я сейчас вас научу.',
         file_cook: '',
       },
       {
+        id: 3,
         name_cook: 'Сендвич',
         img_cook: '../img/sendwitch.jpg',
         category_cook: 'закуски',
-        cost_cook: '400$',
+        cost_cook: '400',
         weight_cook: '250гр',
         description_cook: 'Домашний бургер никогда не сравнится с покупным из ближайшей фастфудной забегаловки! Что является гарантией успеха в приготовлении домашнего бургера? Во-первых, булочки, выпеченные самостоятельно (не покупные!), сочная котлета, соусы, овощи и....непременно веселая компания! Приготовить такой бургер я очень советую на природе - на решетке зажарить котлету и собрать сам бургер прямо на месте! На свежем воздухе в компании любимых друзей такой бургер станет еще вкуснее! Ну а как испечь настоящие булочки для бургера, как сделать фарш для сочнейшей котлеты и как собрать сам бургер я сейчас вас научу.',
         file_cook: '',
@@ -137,12 +150,27 @@ menu = new Vue({
     file_check: false,
     button_check: false,
 
-
+    show_descr: false,
     // menu add==================================================
+    // CART ======================================================
+    // CART ======================================================
   }),
+  computed: {
+    cart() {
+      return this.menu_add_item.filter(i => i.quantity)
+    },
+    count() {
+      return this.cart.reduce( (n, cart) => cart.quantity + n, 0)
+    },
+    total() {
+      return this.cart.reduce( (n, cart) => cart.cost_cook * cart.quantity + n, 0).toFixed(2);
+    }
+  },
   beforeMount() {
     this.try_load_user();
   },
+
+
   methods: {
     try_load_user() {
       if (document.location.pathname === '/') {
@@ -487,6 +515,15 @@ menu = new Vue({
       qrcode.makeCode(elText.value);
     },
 
+    // cart metods====================================================================
+
+
+    addToCart(item) {
+      item.quantity ? item.quantity++ : this.$set(item, 'quantity', +1)
+      console.log(this.cart)
+    },
+    // cart metods====================================================================
+
     // menu add array=================================================
     add_menu_array(id = '') {
       this.menu_add_item.push({
@@ -502,20 +539,21 @@ menu = new Vue({
       })
       this.menu_categorys.push({
         category_cook: this.category_cook,
+        category_img_cook: this.objectUrlcategory
       })
-    }, 
+    },
     // add_menu_categorys_array(){
     //   if (this.category_cook === this.menu_categorys[0].category_cook){
     //     console.log(this.menu_categorys)
-        
-        
-        
+
+
+
     //   } else {
     //     this.menu_categorys.push({
     //       category_cook: this.category_cook,
     //     })
     //   }
-      
+
     //   console.log(this.menu_categorys[1].category_cook)
     // },
     // menu add array=================================================
@@ -529,8 +567,32 @@ menu = new Vue({
       this.coordinates = coordinates;
       console.log(coordinates, canvas)
     },
+    changes__category({
+      coordinates,
+      canvas
+    }) {
+      // this.registration_from_data.avatar = canvas.toDataURL();
+      this.coordinates = coordinates;
+      console.log(coordinates, canvas)
+    },
 
 
+    setupCropperCategory(selectedFilecategory) {
+      if (this.croppercategory) {
+        this.croppercategory.destroy()
+      }
+      if (this.objectUrlcategory) {
+        window.URL.revokeObjectURL(this.objectUrlcategory)
+      }
+      if (!selectedFilecategory) {
+        this.croppercategory = null
+        this.objectUrlcategory = null
+        this.previewCroppedcategory = null
+        return
+      }
+      this.objectUrlmenu = window.URL.createObjectURL(selectedFilecategory)
+      this.$nextTick(this.setupCropperInstancecategory)
+    },
     setupCropperMenu(selectedFilemenu) {
       if (this.croppermenu) {
         this.croppermenu.destroy()
@@ -558,5 +620,5 @@ menu = new Vue({
       console.log("loading", value);
     }
   },
-
+  
 })

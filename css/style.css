@@ -290,56 +290,134 @@ img {
   align-items: center;
   flex-wrap: wrap;
 }
-.button__menu__main button{
+
+.button__menu__main button {
   margin: 5px;
 }
 
 .menu__img {
-  width: 100%;
-  max-width: 200px;
-  height: auto;
-  margin: 5px 10px;
+  position: relative;
 }
-.name__food{
+
+.delete__menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.edit__menu__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.name__food {
   font-size: 20px;
   font-weight: bold;
 }
-.weight__food{
+
+.weight__food {
   font-size: 15px;
   font-weight: bold;
   margin: 5px 0 !important;
 }
-.cost__food{
+
+.cost__food {
   font-size: 20px;
   font-weight: bold;
   margin: 5px 0 !important;
   text-align: end;
 }
-.list__item__menu{
+
+.list__item__menu {
   margin-bottom: 10px;
-  box-shadow: 0px 7px 11px -4px rgba(0,0,0,1);
+  box-shadow: 0px 7px 11px -4px rgba(0, 0, 0, 1);
 }
-.category__food{
+
+.category__food {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   color: rgb(255, 255, 255)
 }
-.menu__container .v-list-item--link{
+
+.menu__container .v-list-item--link {
   background-color: black;
 }
-.menu__container .theme--light.v-icon{
+
+.menu__container .theme--light.v-icon {
   color: #fff;
 }
-.button__cook{
+
+.button__cook {
   background-color: rgb(231, 231, 231);
   width: 100%;
   border-radius: 20px;
   padding: 15px 5px 0 5px;
   margin-bottom: 5px;
 }
+
 .button__cook h4 {
   text-align: center;
+}
+
+.description__cook {
+  font-size: 12px;
+}
+
+.cost__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* flex-direction: column; */
+}
+
+.card__menu__block {
+  position: relative;
+}
+
+.cart__block {
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.footer__cart__block {
+  display: flex;
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  margin: 5px 0;
+}
+
+.footer__flex__cart__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.footer__cart__text {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+}
+
+.footer__cart__text p,
+.footer__cart__arrow__block p {
+  margin: 0 5px;
+}
+
+.footer__cart__arrow__block {
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+}
+.footer__delete__product{
+  margin: 5px;
+  position: absolute;
+  top: 0;
+  right: 0px;
 }
 /*=================================main styles end====================================*/
 /*=================================Login====================================*/
@@ -390,7 +468,8 @@ img {
   .list__item__menu {
     flex-direction: column;
   }
-  .menu__img{
+
+  .menu__img {
     max-width: 100%;
   }
 }
