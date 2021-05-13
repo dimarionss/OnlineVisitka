@@ -369,6 +369,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 130px;
   /* flex-direction: column; */
 }
 
@@ -413,12 +414,20 @@ img {
   font-size: 15px;
   align-items: center;
 }
-.footer__delete__product{
+
+.footer__delete__product {
   margin: 5px;
   position: absolute;
   top: 0;
   right: 0px;
 }
+
+.wrapper__worksheet__block {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /*=================================main styles end====================================*/
 /*=================================Login====================================*/
 .main__login__block {
@@ -471,6 +480,13 @@ img {
 
   .menu__img {
     max-width: 100%;
+  }
+
+  .card__menu__block {
+    max-width: 100% !important;
+  }
+  .wrapper__worksheet__block{
+    flex-direction: column;
   }
 }
 
