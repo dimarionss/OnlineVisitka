@@ -111,7 +111,22 @@ menu = new Vue({
     // menu add==================================================
     add_menu: false,
     edit_menu: false,
-    menu_categorys: [{}],
+    edit_name_catalog: false,
+    add_catalog: false,
+    add_category_modal: false,
+    edit_category_modal: false,
+    menu_categorys: [{
+        category_cook: 'основное блюдо',
+        category_img_cook: '../img/burger.jpg',
+        name_catalog: 'БАР'
+      },
+      {
+        category_cook: 'закуски',
+        category_img_cook: '../img/sendwitch.jpg',
+        name_catalog: 'БАР'
+      }
+    ],
+    catalog_names: [{}],
     // cart: [],
     menu_add_item: [{
         id: 1,
@@ -160,10 +175,10 @@ menu = new Vue({
       return this.menu_add_item.filter(i => i.quantity)
     },
     count() {
-      return this.cart.reduce( (n, cart) => cart.quantity + n, 0)
+      return this.cart.reduce((n, cart) => cart.quantity + n, 0)
     },
     total() {
-      return this.cart.reduce( (n, cart) => cart.cost_cook * cart.quantity + n, 0).toFixed(2);
+      return this.cart.reduce((n, cart) => cart.cost_cook * cart.quantity + n, 0).toFixed(2);
     }
   },
   beforeMount() {
@@ -469,7 +484,12 @@ menu = new Vue({
     },
     removeMenu(index) {
       this.menu_add_item.splice(index, 1)
-      this.update_social()
+    },
+    removeCategory(index) {
+      this.menu_categorys.splice(index, 1)
+    },
+    removeCatalog(index) {
+      this.catalog_names.splice(index, 1)
     },
     copyBtn() {
       var copyText = document.getElementById("copytext");
@@ -537,25 +557,19 @@ menu = new Vue({
         id: id,
 
       })
+    },
+    addCategory() {
       this.menu_categorys.push({
         category_cook: this.category_cook,
         category_img_cook: this.objectUrlcategory
       })
     },
-    // add_menu_categorys_array(){
-    //   if (this.category_cook === this.menu_categorys[0].category_cook){
-    //     console.log(this.menu_categorys)
+    addCatalog() {
+      this.catalog_names.push({
+        name_catalog: this.name_catalog
+      })
+    },
 
-
-
-    //   } else {
-    //     this.menu_categorys.push({
-    //       category_cook: this.category_cook,
-    //     })
-    //   }
-
-    //   console.log(this.menu_categorys[1].category_cook)
-    // },
     // menu add array=================================================
     // =======================cropp========================
 
@@ -620,5 +634,5 @@ menu = new Vue({
       console.log("loading", value);
     }
   },
-  
+
 })

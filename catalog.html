@@ -93,261 +93,210 @@
                 <v-main class="grey lighten-3" style="margin-bottom: 50px;">
                   <v-sheet min-height="70vh" rounded="lg"
                     style="display: flex; align-items: center; flex-direction: column;">
-                    <v-card class="mx-auto" style="margin: 15px;"max-width="250" :key="item.name_cook"
-                      v-for="(item, index) in menu_add_item">
-                      <v-img :src="item.img_cook" height="200px" gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                        class="white--text align-end">
-                        <v-card-title>{{item.name_cook}}</v-card-title>
-                      </v-img>
-                      <v-card-subtitle>{{item.weight_cook}}</v-card-subtitle>
-                      <v-card-title>{{item.cost_cook}}</v-card-title>
-                      <v-expansion-panels>
-                        <v-expansion-panel>
-                          <v-expansion-panel-header>
-                            Описание
-                          </v-expansion-panel-header>
-                          <v-expansion-panel-content class="description__cook">
-                            {{item.description_cook}}
-                          </v-expansion-panel-content>
-                        </v-expansion-panel>
-                      </v-expansion-panels>
-                    </v-card>
+                    <v-list style="width: 100%;" class="menu__container">
+                      <v-list-group v-for="(catalog, i) in catalog_names" :key="catalog.name_catalog"
+                        v-model="catalog.active">
+                        <template v-slot:activator>
+                          <v-list-item-content>
+                            <v-list-item-title class="category__food">
+                              <!-- modal edit name catalog -->
+                              <v-dialog v-model="edit_name_catalog" persistent max-width="600px">
+                                <template v-slot:activator="{ on: onEdtiMenu, attrs: editMenu }">
+                                  <v-btn elevation="5" class="black__btn btn_main" v-bind="editMenu" v-on="onEdtiMenu"
+                                    text icon>
+                                    <v-icon>mdi-pen</v-icon>
+                                  </v-btn>
+                                </template>
+                                <v-card>
+                                  <v-card-title>
+                                    <span class="headline">Редактировать</span>
+                                  </v-card-title>
 
+                                  <v-card-text>
+                                    <v-container>
+                                      <v-row>
+                                        <v-col cols="12">
+                                          <v-text-field label="Название" required v-model="name_cook">
+                                          </v-text-field>
+                                        </v-col>
+                                      </v-row>
+                                    </v-container>
+                                  </v-card-text>
+                                  <v-card-actions>
+                                    <v-spacer></v-spacer>
+                                    <v-btn color="black darken-1" text @click="edit_name_catalog = false">
+                                      Закрыть
+                                    </v-btn>
+                                    <v-btn color="black darken-1" text @click="edit_name_catalog = false">
+                                      Сохранить меню
+                                    </v-btn>
+                                  </v-card-actions>
+                                </v-card>
+                              </v-dialog>
+                              <!-- modal edit menu end-->
+                              {{catalog.name_catalog}}
+                              <v-btn elevation="2" raised class="black__btn btn_main" @click='removeCatalog(i)'>
+                                <v-icon>mdi-delete</v-icon>
+                              </v-btn>
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </template>
+                        <v-list-item>
+                          <v-list-item-content>
+                            <!-- modal add category -->
+                            <v-dialog v-model="add_category_modal" persistent max-width="600px">
+                              <template v-slot:activator="{ on: addCat, attrs: addcatModal }">
+                                <v-col cols="12" sm="12" style="text-align: center;">
+                                  <v-btn elevation="2" raised class="black__btn btn_main" v-bind="addcatModal"
+                                    v-on="addCat">
+                                    <v-icon left>
+                                      mdi-plus-box
+                                    </v-icon>Добавить категорию
+                                  </v-btn>
+                                </v-col>
+                              </template>
+                              <v-card>
+                                <v-card-title>
+                                  <span class="headline">Добавить категорию</span>
+                                </v-card-title>
 
+                                <v-card-text>
+                                  <v-container>
+                                    <v-row>
+                                      <v-col cols="12">
+                                        <v-text-field label="Название категории" required v-model="name_category">
+                                        </v-text-field>
+                                      </v-col>
+                                      <v-col cols="12">
+                                        <cropper ref="source" :src="objectUrlcategory"
+                                          :stencil-props="{ aspectRatio: 9/9 }" @change="changes__category">
+                                        </cropper>
+                                        <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
+                                          accept="image/png, image/jpeg" placeholder="Выберите изображение"
+                                          :show-size="1024" @change="setupCropperCategory" v-model="category_img_cook">
+                                        </v-file-input>
+                                      </v-col>
+                                    </v-row>
+                                  </v-container>
+                                </v-card-text>
+                                <v-card-actions>
+                                  <v-spacer></v-spacer>
+                                  <v-btn color="black darken-1" text @click="add_category_modal = false">
+                                    Закрыть
+                                  </v-btn>
+                                  <v-btn color="black darken-1" text @click="add_category_modal = false, addCategory()">
+                                    Сохранить меню
+                                  </v-btn>
+                                </v-card-actions>
+                              </v-card>
+                            </v-dialog>
+                            <!-- modal add category end-->
+                            <v-list-item-title v-for="(item, index) in menu_categorys" style='position: relative;'>
+                              <div>
+                                <a href="menu.html">
+                                  <v-img :src="item.category_img_cook" height="200px"
+                                    gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                                    class="white--text align-end menu__img">
 
-
-
-
-
-                    <v-list v-if='menu_categorys.length !== 0' style="width: 100%;" v-for="(cat, i) in menu_categorys"
-                      class="menu__container">
-                      <template>
-                        <v-list-group v-if='menu_categorys.category_cook !== cat.category_cook'>
-                          <template v-slot:activator>
-                            <v-img :src="cat.category_img_cook" class="white--text align-end"
-                              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)" height="200px">
-                            </v-img>
-                            <v-list-item-title class="category__food">{{cat.category_cook}}</v-list-item-title>
-
-                          </template>
-
-                          <v-list-item :key="item.name_cook" v-for="(item, index) in menu_add_item"
-                            v-if='cat.category_cook === item.category_cook' class="list__item__menu">
-                            <v-img :src="item.img_cook" class="menu__img">
-                            </v-img>
-                            <v-list-item-content>
-
-                              <v-list-item-title class="name__food">
-                                {{item.name_cook}}
-                              </v-list-item-title>
-                              <p class="weight__food">{{item.weight_cook}}</p>
-                              <v-list-item-subtitle v-html="item.description_cook"
-                                style="white-space: normal; color:black;">
-                              </v-list-item-subtitle>
-                              <p class="cost__food">{{item.cost_cook}}</p>
-                              <div class="button__menu__main">
-
-
-
-
-
-
-
-
-
-                                <!-- modal edit menu -->
-                                <v-dialog v-model="edit_menu" persistent max-width="600px">
-                                  <template v-slot:activator="{ on: onEdtiMenu, attrs: editMenu }">
-                                    <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editMenu"
-                                      v-on="onEdtiMenu">
-                                      <v-icon left>mdi-pen</v-icon>Редактировать меню
+                                    <v-card-title>{{item.category_cook}}</v-card-title>
+                                  </v-img>
+                                </a>
+                                <v-btn elevation="2" raised class="black__btn btn_main delete__menu"
+                                  @click='removeCategory(index)'>
+                                  <v-icon>mdi-delete</v-icon>
+                                </v-btn>
+                                <!-- modal edit category -->
+                                <v-dialog v-model="edit_category_modal" persistent max-width="600px">
+                                  <template v-slot:activator="{ on: onEditCat, attrs: editCat }">
+                                    <v-btn elevation="2" raised class="black__btn btn_main edit__menu__icon"
+                                      v-bind="editCat" v-on="onEditCat">
+                                      <v-icon>mdi-pen</v-icon>
                                     </v-btn>
                                   </template>
                                   <v-card>
                                     <v-card-title>
-                                      <span class="headline">Редактировать меню</span>
+                                      <span class="headline">Редактировать категорию</span>
                                     </v-card-title>
 
                                     <v-card-text>
                                       <v-container>
                                         <v-row>
                                           <v-col cols="12">
-                                            <v-text-field label="Название" required v-model="name_cook">
+                                            <v-text-field label="Название категории" required v-model="name_category">
                                             </v-text-field>
                                           </v-col>
                                           <v-col cols="12">
-                                            <cropper ref="source" :src="objectUrlmenu"
-                                              :stencil-props="{ aspectRatio: 16/9 }" @change="changes">
+                                            <cropper ref="source" :src="objectUrlcategory"
+                                              :stencil-props="{ aspectRatio: 9/9 }" @change="changes__category">
                                             </cropper>
-
                                             <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
-                                              accept="image/png, image/jpeg" placeholder="Выберите фото блюда"
-                                              :show-size="1024" @change="setupCropperMenu" v-model="img_cook">
+                                              accept="image/png, image/jpeg" placeholder="Выберите изображение"
+                                              :show-size="1024" @change="setupCropperCategory"
+                                              v-model="category_img_cook">
                                             </v-file-input>
-
-                                          </v-col>
-                                          <v-col cols="12">
-                                            <v-text-field label="Цена" required v-model="cost_cook">
-                                            </v-text-field>
-                                          </v-col>
-                                          <v-col cols="12" sm="6" md="6">
-                                            <v-text-field label="Категория" required v-model="category_cook">
-                                            </v-text-field>
-                                          </v-col>
-                                          <v-col cols="12" sm="6" md="6">
-                                            <v-text-field label="Вес" v-model="weight_cook">
-                                            </v-text-field>
-                                          </v-col>
-
-                                          <v-col cols="12">
-                                            <v-textarea outlined name="input-7-4" label="Описания" value=""
-                                              v-model="description_cook">
-                                            </v-textarea>
-                                          </v-col>
-                                          <v-col cols="12">
-                                            <v-file-input truncate-length="15" label="Добавить файл в PDF формате"
-                                              hint="Если каталок или меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
-                                              persistent-hint v-model="file_cook"></v-file-input>
                                           </v-col>
                                         </v-row>
                                       </v-container>
                                     </v-card-text>
                                     <v-card-actions>
                                       <v-spacer></v-spacer>
-                                      <v-btn color="black darken-1" text @click="edit_menu = false">
+                                      <v-btn color="black darken-1" text @click="edit_category_modal = false">
                                         Закрыть
                                       </v-btn>
-                                      <v-btn color="black darken-1" text @click="edit_menu = false">
+                                      <v-btn color="black darken-1" text @click="edit_category_modal = false">
                                         Сохранить меню
                                       </v-btn>
                                     </v-card-actions>
                                   </v-card>
                                 </v-dialog>
-                                <!-- modal edit menu end-->
-                                <v-btn elevation="2" raised class="black__btn btn_main" @click='removeMenu(index)'>
-                                  <v-icon>mdi-delete</v-icon>
-                                </v-btn>
+                                <!-- modal edit category end-->
                               </div>
-                            </v-list-item-content>
-
-                          </v-list-item>
-                          <v-divider></v-divider>
-                      </template>
-                    </v-list>
-                    </v-list-group>
+                            </v-list-item-title>
+                          </v-list-item-content>
+                        </v-list-item>
+                      </v-list-group>
+                      <v-divider></v-divider>
 
 
 
-                    <!-- modal add menu -->
-                    <v-dialog v-model="add_menu" persistent max-width="600px">
-                      <template v-slot:activator="{ on: onEdit, attrs: editModal }">
-                        <v-col cols="12" sm="12" style="text-align: center;">
-                          <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editModal" v-on="onEdit">
-                            <v-icon left>
-                              mdi-plus-box
-                            </v-icon>Создать каталог / меню
-                          </v-btn>
-                        </v-col>
-                      </template>
-                      <v-card>
-                        <v-card-title>
-                          <span class="headline">Добавить</span>
-                        </v-card-title>
+                      <!-- modal add menu -->
+                      <v-dialog v-model="add_catalog" persistent max-width="600px">
+                        <template v-slot:activator="{ on: onEdit, attrs: editModal }">
+                          <v-col cols="12" sm="12" style="text-align: center;">
+                            <v-btn elevation="2" raised class="black__btn btn_main" v-bind="editModal" v-on="onEdit">
+                              <v-icon left>
+                                mdi-plus-box
+                              </v-icon>Создать каталог / меню
+                            </v-btn>
+                          </v-col>
+                        </template>
+                        <v-card>
+                          <v-card-title>
+                            <span class="headline">Добавить</span>
+                          </v-card-title>
 
-                        <v-card-text>
-                          <v-container>
-                            <v-row>
-                              <v-col cols="12">
-                                <v-text-field label="Название" required v-model="name_cook"></v-text-field>
-                              </v-col>
-                              <v-col cols="12">
-                                <cropper ref="source" :src="objectUrlmenu" :stencil-props="{ aspectRatio: 16/9 }"
-                                  @change="changes">
-                                </cropper>
-                                <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
-                                  accept="image/png, image/jpeg" placeholder="Выберите изображение" :show-size="1024"
-                                  @change="setupCropperMenu" v-model="img_cook">
-                                </v-file-input>
-                              </v-col>
-                              <v-col cols="12">
-                                <v-text-field label="Цена" required v-model="cost_cook">
-                                </v-text-field>
-                              </v-col>
-
-
-
-
-                              <v-col cols="12" v-if='category_check == true'>
-                                <cropper ref="source" :src="objectUrlcategory" :stencil-props="{ aspectRatio: 9/9 }"
-                                  @change="changes__category">
-                                </cropper>
-                                <v-file-input label="Изображение" class="my-4" prepend-icon="mdi-camera"
-                                  accept="image/png, image/jpeg" placeholder="Выберите изображение" :show-size="1024"
-                                  @change="setupCropperCategory" v-model="category_img_cook">
-                                </v-file-input>
-                                <v-text-field outlined label="Категория" required v-model="category_cook">
-                                </v-text-field>
-                              </v-col>
-                              <v-col cols="12" v-if='weight_check == true'>
-                                <v-text-field outlined label="Вес" v-model="weight_cook"></v-text-field>
-                              </v-col>
-                              <v-col cols="12" v-if='description_check == true'>
-                                <v-textarea outlined name="input-7-4" label="Описания" value=""
-                                  v-model="description_cook">
-                                </v-textarea>
-                              </v-col>
-                              <v-col cols="12" v-if='file_check == true'>
-                                <v-file-input truncate-length="15" label="Добавить файл в PDF формате"
-                                  hint="Если каталог или меню есть в PDF формате нужно только выбрать категорию и загрузить PDF файл."
-                                  persistent-hint v-model="file_cook"></v-file-input>
-                              </v-col>
-
-                              <div v-if='button_check == true' class="button__cook">
-                                <h4 class="headline">Кнопка обратной связи</h4>
+                          <v-card-text>
+                            <v-container>
+                              <v-row>
                                 <v-col cols="12">
-                                  <v-text-field outlined label="Название кнопки" v-model="name_button_cook">
+                                  <v-text-field label="Название каталога / меню" required v-model="name_catalog">
                                   </v-text-field>
                                 </v-col>
-                                <v-col cols="12">
-                                  <v-text-field outlined label="Почта на которую должны приходить заявки (увидомления)"
-                                    v-model="mail_admin_cook"></v-text-field>
-                                </v-col>
-                              </div>
-
-
-                              <h4 class="headline">Добавить дополнительные поля</h4>
-                              <v-col cols="12" sm="6" md="6">
-                                <v-checkbox v-model="description_check" label="Описание" value=""></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="6">
-                                <v-checkbox v-model="category_check" label="Категория" value=""></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="6">
-                                <v-checkbox v-model="weight_check" label="Вес" value=""></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="6">
-                                <v-checkbox v-model="file_check" label="Загрузить свой файл каталога или меню (PDF)"
-                                  value=""></v-checkbox>
-                              </v-col>
-                              <v-col cols="12" sm="6" md="12">
-                                <v-checkbox v-model="button_check" label="Кнопка обратной связи" value=""></v-checkbox>
-                              </v-col>
-
-                            </v-row>
-                          </v-container>
-                        </v-card-text>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn color="black darken-1" text @click="add_menu = false">
-                            Закрыть
-                          </v-btn>
-                          <v-btn color="black darken-1" text @click="add_menu = false, add_menu_array()">
-                            Сохранить меню
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                    <!-- modal add menu end-->
+                              </v-row>
+                            </v-container>
+                          </v-card-text>
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <v-btn color="black darken-1" text @click="add_catalog = false">
+                              Закрыть
+                            </v-btn>
+                            <v-btn color="black darken-1" text @click="add_catalog = false, addCatalog()">
+                              Сохранить меню
+                            </v-btn>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                      <!-- modal add menu end-->
                   </v-sheet>
                 </v-main>
               </v-col>
