@@ -558,11 +558,14 @@ menu = new Vue({
 
       })
     },
-    addCategory() {
+    addCategory(id = '') {
       this.menu_categorys.push({
-        category_cook: this.category_cook,
-        category_img_cook: this.objectUrlcategory
+        category_cook: this.name_category,
+        category_img_cook: this.objectUrlcategory,
+        id: id,
+        
       })
+      
     },
     addCatalog() {
       this.catalog_names.push({
